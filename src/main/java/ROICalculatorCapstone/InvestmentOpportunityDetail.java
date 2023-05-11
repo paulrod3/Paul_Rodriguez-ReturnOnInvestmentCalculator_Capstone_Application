@@ -3,26 +3,26 @@ package ROICalculatorCapstone;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class InvestmentOpportunity {
+public class InvestmentOpportunityDetail {
 
     private String address;
-    private double initialInvestment;
-    private double targetInvestment;
-    private double annualInterestRate;
+    private double purchasePrice;
+    private double expectedRehabCost;
+    private double interestRate;
     private ArrayList renovationExpense;
     private ArrayList<RenovationExpense> renovationExpenses = new ArrayList<RenovationExpense>();
 
-    public InvestmentOpportunity(String address, Scanner scanner) {
+    public InvestmentOpportunityDetail(String address, Scanner scanner) {
         this.address = address;
 
         System.out.print("Enter initial investment amount: ");
-        this.initialInvestment = scanner.nextDouble();
+        this.purchasePrice = scanner.nextDouble();
 
-        System.out.print("Enter target investment amount: ");
-        this.targetInvestment = scanner.nextDouble();
+        System.out.print("Enter Expected Rehab Cost amount: ");
+        this.expectedRehabCost = scanner.nextDouble();
 
         System.out.print("Enter annual interest rate (as a decimal): ");
-        this.annualInterestRate = scanner.nextDouble();
+        this.interestRate = scanner.nextDouble();
 
         scanner.nextLine(); // consume newline character
 
@@ -47,13 +47,13 @@ public class InvestmentOpportunity {
 
     public void updateDetails(Scanner scanner) {
         System.out.print("Enter initial investment amount: ");
-        this.initialInvestment = scanner.nextDouble();
+        this.purchasePrice = scanner.nextDouble();
 
         System.out.print("Enter target investment amount: ");
-        this.targetInvestment = scanner.nextDouble();
+        this.expectedRehabCost = scanner.nextDouble();
 
         System.out.print("Enter annual interest rate (as a decimal): ");
-        this.annualInterestRate = scanner.nextDouble();
+        this.interestRate = scanner.nextDouble();
 
         scanner.nextLine(); // consume newline character
 
@@ -70,9 +70,9 @@ public class InvestmentOpportunity {
 
     public void displayDetails() {
         System.out.println("Address: " + this.address);
-        System.out.println("Initial Investment: $" + this.initialInvestment);
-        System.out.println("Target Investment: $" + this.targetInvestment);
-        System.out.println("Annual Interest Rate: " + (this.annualInterestRate * 100) + "%");
+        System.out.println("Initial Investment: $" + this.purchasePrice);
+        System.out.println("Target Investment: $" + this.expectedRehabCost);
+        System.out.println("Annual Interest Rate: " + (this.interestRate * 100) + "%");
 
         System.out.println("Renovation Expenses:");
         for (RenovationExpense renovationExpense : this.renovationExpenses) {
@@ -81,11 +81,11 @@ public class InvestmentOpportunity {
     }
 
     public void calculateAndOutputProjectedTotalReturn() {
-        double totalReturn = this.initialInvestment;
+        double totalReturn = this.purchasePrice;
         int years = 0;
 
-        while (totalReturn < this.targetInvestment) {
-            totalReturn += (totalReturn * this.annualInterestRate);
+        while (totalReturn < this.expectedRehabCost) {
+            totalReturn += (totalReturn * this.interestRate);
             years++;
         }
 

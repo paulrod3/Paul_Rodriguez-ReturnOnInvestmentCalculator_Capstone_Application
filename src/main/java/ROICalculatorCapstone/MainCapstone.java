@@ -8,7 +8,7 @@ public class MainCapstone {
         Scanner scanner = new Scanner(System.in);
 
         // Create HashMap to store investment details
-        HashMap<String, InvestmentOpportunity> investmentOpportunities = new HashMap<String, InvestmentOpportunity>();
+        HashMap<String, InvestmentOpportunityDetail> investmentOpportunities = new HashMap<String, InvestmentOpportunityDetail>();
 
         // Loop to input investment details
         while (true) {
@@ -19,28 +19,28 @@ public class MainCapstone {
                 break;
             }
 
-            InvestmentOpportunity investmentOpportunity = investmentOpportunities.get(inputAddress);
+            InvestmentOpportunityDetail investmentOpportunityDetail = investmentOpportunities.get(inputAddress);
 
-            if (investmentOpportunity != null) {
+            if (investmentOpportunityDetail != null) {
                 // Investment opportunity already exists, update details
                 System.out.println("Investment opportunity already exists, updating details...");
-                investmentOpportunity.updateDetails(scanner);
+                investmentOpportunityDetail.updateDetails(scanner);
 
                 System.out.println("Investment opportunity details updated successfully!");
             } else {
                 // Investment opportunity does not exist, add details
                 System.out.println("Investment opportunity does not exist, adding details...");
-                InvestmentOpportunity newInvestmentOpportunity = new InvestmentOpportunity(inputAddress, scanner);
-                investmentOpportunities.put(inputAddress, newInvestmentOpportunity);
+                InvestmentOpportunityDetail newInvestmentOpportunityDetail = new InvestmentOpportunityDetail(inputAddress, scanner);
+                investmentOpportunities.put(inputAddress, newInvestmentOpportunityDetail);
 
                 System.out.println("Investment opportunity details added successfully!");
             }
         }
 
         // Loop to output projected total return and renovation expenses for each investment opportunity
-        for (InvestmentOpportunity investmentOpportunity : investmentOpportunities.values()) {
-            investmentOpportunity.calculateAndOutputProjectedTotalReturn();
-            investmentOpportunity.calculateAndOutputRenovationExpenses();
+        for (InvestmentOpportunityDetail investmentOpportunityDetail : investmentOpportunities.values()) {
+            investmentOpportunityDetail.calculateAndOutputProjectedTotalReturn();
+            investmentOpportunityDetail.calculateAndOutputRenovationExpenses();
         }
     }
 
