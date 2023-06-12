@@ -1,4 +1,4 @@
-package ROICalculatorCapstone;
+package models;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -36,6 +36,17 @@ public class Property {
     }
 
     // Getters and setters
+
+    public void addRenovationExpense(RenovationExpense renovationExpense) {
+        expenses.add(renovationExpense);
+        renovationExpense.setProperty(this);
+    }
+
+    public void removeRenovationExpense(RenovationExpense renovationExpense) {
+        expenses.remove(renovationExpense);
+        renovationExpense.setProperty(null);
+    }
+
 
     public int getId() {
         return id;

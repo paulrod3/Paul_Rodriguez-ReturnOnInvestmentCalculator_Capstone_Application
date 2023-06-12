@@ -1,9 +1,6 @@
-package ROICalculatorCapstone;
+package models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class RenovationExpense {
@@ -24,7 +21,16 @@ public class RenovationExpense {
         this.dateOfPurchase = dateOfPurchase;
     }
 
+    @ManyToOne
+    private Property property;
+
     // Getters and setters
+    public Property getProperty() {
+        return property;
+    }
+    public void setProperty(Property property) {
+        this.property = property;
+    }
 
     public int getId() {
         return id;

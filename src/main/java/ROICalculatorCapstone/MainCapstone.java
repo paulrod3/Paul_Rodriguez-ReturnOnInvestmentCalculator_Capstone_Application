@@ -1,12 +1,13 @@
 package ROICalculatorCapstone;
 
+import models.FinancialDetail;
+import models.Property;
+import models.RenovationExpense;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
-import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 

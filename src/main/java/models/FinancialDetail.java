@@ -1,4 +1,4 @@
-package ROICalculatorCapstone;
+package models;
 
 import javax.persistence.*;
 
