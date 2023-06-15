@@ -7,9 +7,11 @@ import org.springframework.stereotype.Service;
 import ROICalculatorCapstone.repositories.PropertyRepository;
 import ROICalculatorCapstone.repositories.RenovationExpenseRepository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
+@Transactional
 public class PropertyService {
     private final PropertyRepository propertyRepository;
     private final RenovationExpenseRepository renovationExpenseRepository;

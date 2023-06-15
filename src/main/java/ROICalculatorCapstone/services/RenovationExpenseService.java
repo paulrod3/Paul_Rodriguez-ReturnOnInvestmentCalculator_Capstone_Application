@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 import ROICalculatorCapstone.repositories.PropertyRepository;
 import ROICalculatorCapstone.repositories.RenovationExpenseRepository;
 
+import java.util.Collections;
+import java.util.List;
+
 @Service
 public class RenovationExpenseService {
     private final RenovationExpenseRepository renovationExpenseRepository;
@@ -30,8 +33,21 @@ public class RenovationExpenseService {
         return renovationExpenseRepository.save(renovationExpense);
     }
 
-    public void deleteRenovationExpense(Long id) {
-        renovationExpenseRepository.deleteById(id);
+    public boolean deleteRenovationExpense(Long id) {
+        try {
+            renovationExpenseRepository.deleteById(id);
+            return true; // Return true if deletion was successful
+        } catch (Exception e) {
+            return false; // Return false if deletion failed
+        }
+    }
+
+    public List<RenovationExpense> getRenovationExpensesByPropertyAddress(String address) {
+        Property property = propertyRepository.findById(address).orElse(null);
+        if (property != null) {
+            return property.getExpenses();
+        }
+        return Collections.emptyList();
     }
 
     public Property getPropertyByAddress(String address) {

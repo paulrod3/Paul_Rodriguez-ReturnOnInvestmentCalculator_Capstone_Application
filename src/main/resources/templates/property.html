@@ -3,9 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
 <h1>Property Details</h1>
+<a href="/properties/new" class="btn btn-primary">Add Property</a>
 <table>
     <tr>
         <th>Address</th>
@@ -15,11 +19,19 @@
         <th>Number of Bathrooms</th>
     </tr>
     <tr th:each="property : ${properties}">
+        <td>
+            <input type="checkbox" name="propertyIds" value="${property.id}" />
+        </td>
         <td th:text="${property.address}"></td>
         <td th:text="${property.propertyType}"></td>
         <td th:text="${property.sqft}"></td>
         <td th:text="${property.numberOfBedrooms}"></td>
         <td th:text="${property.numberOfBathrooms}"></td>
+        <td>
+            <form th:action="@{/properties/{address}/delete(address=${property.address})}" method="post">
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+        </td>
     </tr>
 </table>
 

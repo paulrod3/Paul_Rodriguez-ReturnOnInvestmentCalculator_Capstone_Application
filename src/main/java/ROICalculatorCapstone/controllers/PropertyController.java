@@ -1,4 +1,4 @@
-package ROICalculatorCapstone.models.controllers;
+package ROICalculatorCapstone.controllers;
 import ROICalculatorCapstone.models.Property;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -60,9 +60,9 @@ public class PropertyController {
         return "redirect:/properties"; // Redirect to the /properties endpoint to display the updated list
     }
 
-    @GetMapping("/{address}/delete")
+    @PostMapping("/{address}/delete")
     public String deleteProperty(@PathVariable String address) {
         propertyService.deleteProperty(address);
-        return "redirect:/properties"; // Redirect to the /properties endpoint to display the updated list
+        return "redirect:/properties";
     }
 }

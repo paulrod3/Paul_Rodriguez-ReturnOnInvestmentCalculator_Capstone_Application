@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class RenovationExpense {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
     private String typeOfExpense;
     private double amount;
     private String dateOfPurchase;
@@ -33,11 +33,11 @@ public class RenovationExpense {
         this.property = property;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

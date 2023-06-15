@@ -1,4 +1,4 @@
-package ROICalculatorCapstone.models.controllers;
+package ROICalculatorCapstone.controllers;
 
 import ROICalculatorCapstone.models.FinancialDetail;
 import org.springframework.http.HttpStatus;
