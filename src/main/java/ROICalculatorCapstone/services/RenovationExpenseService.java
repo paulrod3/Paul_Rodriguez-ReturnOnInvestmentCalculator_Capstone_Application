@@ -1,11 +1,11 @@
-package services;
+package ROICalculatorCapstone.services;
 
-import models.Property;
-import models.RenovationExpense;
+import ROICalculatorCapstone.models.Property;
+import ROICalculatorCapstone.models.RenovationExpense;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repositories.PropertyRepository;
-import repositories.RenovationExpenseRepository;
+import ROICalculatorCapstone.repositories.PropertyRepository;
+import ROICalculatorCapstone.repositories.RenovationExpenseRepository;
 
 @Service
 public class RenovationExpenseService {

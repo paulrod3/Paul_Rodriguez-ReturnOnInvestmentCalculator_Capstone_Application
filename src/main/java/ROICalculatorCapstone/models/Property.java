@@ -1,4 +1,4 @@
-package models;
+package ROICalculatorCapstone.models;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -7,8 +7,6 @@ import java.util.List;
 @Entity
 public class Property {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
     private String address;
     private String propertyType;
     private int sqft;
@@ -45,15 +43,6 @@ public class Property {
     public void removeRenovationExpense(RenovationExpense renovationExpense) {
         expenses.remove(renovationExpense);
         renovationExpense.setProperty(null);
-    }
-
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getAddress() {

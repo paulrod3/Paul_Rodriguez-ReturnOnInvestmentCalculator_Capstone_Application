@@ -1,8 +1,8 @@
 package ROICalculatorCapstone;
 
-import models.FinancialDetail;
-import models.Property;
-import models.RenovationExpense;
+import ROICalculatorCapstone.models.FinancialDetail;
+import ROICalculatorCapstone.models.Property;
+import ROICalculatorCapstone.models.RenovationExpense;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;

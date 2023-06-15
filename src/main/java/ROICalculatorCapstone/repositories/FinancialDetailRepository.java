@@ -1,7 +1,6 @@
-package repositories;
+package ROICalculatorCapstone.repositories;
 
-import models.FinancialDetail;
-import models.Property;
+import ROICalculatorCapstone.models.FinancialDetail;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

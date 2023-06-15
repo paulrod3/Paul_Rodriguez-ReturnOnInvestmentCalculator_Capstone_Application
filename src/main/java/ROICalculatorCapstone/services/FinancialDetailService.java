@@ -1,11 +1,11 @@
-package services;
+package ROICalculatorCapstone.services;
 
-import models.FinancialDetail;
-import models.Property;
+import ROICalculatorCapstone.models.FinancialDetail;
+import ROICalculatorCapstone.models.Property;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repositories.FinancialDetailRepository;
-import repositories.PropertyRepository;
+import ROICalculatorCapstone.repositories.FinancialDetailRepository;
+import ROICalculatorCapstone.repositories.PropertyRepository;
 
 @Service
 public class FinancialDetailService {

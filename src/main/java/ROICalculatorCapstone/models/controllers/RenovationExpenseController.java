@@ -1,11 +1,11 @@
-package controllers;
+package ROICalculatorCapstone.models.controllers;
 
-import models.Property;
-import models.RenovationExpense;
+import ROICalculatorCapstone.models.Property;
+import ROICalculatorCapstone.models.RenovationExpense;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import services.PropertyService;
-import services.RenovationExpenseService;
+import ROICalculatorCapstone.services.PropertyService;
+import ROICalculatorCapstone.services.RenovationExpenseService;
 
 import java.util.Collections;
 import java.util.List;

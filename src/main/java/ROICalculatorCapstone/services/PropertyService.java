@@ -1,11 +1,11 @@
-package services;
+package ROICalculatorCapstone.services;
 
-import models.Property;
-import models.RenovationExpense;
+import ROICalculatorCapstone.models.Property;
+import ROICalculatorCapstone.models.RenovationExpense;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repositories.PropertyRepository;
-import repositories.RenovationExpenseRepository;
+import ROICalculatorCapstone.repositories.PropertyRepository;
+import ROICalculatorCapstone.repositories.RenovationExpenseRepository;
 
 import java.util.List;
 
@@ -21,27 +21,40 @@ public class PropertyService {
     }
 
     public List<Property> getAllProperties() {
+
         return propertyRepository.findAll();
     }
 
     public Property getPropertyByAddress(String address) {
+
         return propertyRepository.findById(address).orElse(null);
     }
 
     public List<Property> getPropertiesByAddress(String address) {
-        return propertyRepository.findAllByAddress(address);
+        return propertyRepository.findByAddress(address);
     }
 
     public Property saveProperty(Property property) {
+
         return propertyRepository.save(property);
     }
 
-    public Property updateProperty(Property property) {
-        return propertyRepository.save(property);
+    public Property updateProperty(String address, Property updatedProperty) {
+        Property property = (Property) propertyRepository.findByAddress(address);
+        if (property != null) {
+            // Update the necessary fields of the property with the updatedProperty values
+            property.setPropertyType(updatedProperty.getPropertyType());
+            property.setSqft(updatedProperty.getSqft());
+            property.setNumberOfBedrooms(updatedProperty.getNumberOfBedrooms());
+            property.setNumberOfBathrooms(updatedProperty.getNumberOfBathrooms());
+
+            return propertyRepository.save(property);
+        }
+        return null; // Handle error if property not found
     }
 
     public void deleteProperty(String address) {
-        propertyRepository.deleteById(address);
+        propertyRepository.deleteByAddress(address);
     }
 
     public void addRenovationExpense(String address, RenovationExpense renovationExpense) {

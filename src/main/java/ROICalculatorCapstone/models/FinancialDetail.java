@@ -1,12 +1,11 @@
-package models;
+package ROICalculatorCapstone.models;
 
 import javax.persistence.*;
 
 @Entity
 public class FinancialDetail {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private String address;
     private double purchasePrice;
     private double expectedRehabCosts;
     private double interestRate;
@@ -19,21 +18,22 @@ public class FinancialDetail {
     private double costsOfSale;
     private double afterRepairValue;
 
-    @OneToOne(mappedBy = "financialDetail", cascade = CascadeType.ALL)
+    @OneToOne
+    @MapsId
+    @JoinColumn(name = "address")
     private Property property;
-
     public FinancialDetail() {
         // Default constructor for Hibernate
     }
 
     // Getters and setters
 
-    public int getId() {
-        return id;
+    public String getAddress() {
+        return address;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public double getPurchasePrice() {

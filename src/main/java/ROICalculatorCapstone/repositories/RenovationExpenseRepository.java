@@ -1,6 +1,6 @@
-package repositories;
+package ROICalculatorCapstone.repositories;
 
-import models.RenovationExpense;
+import ROICalculatorCapstone.models.RenovationExpense;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

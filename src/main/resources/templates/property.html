@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Property Details</h1>
+<table>
+    <tr>
+        <th>Address</th>
+        <th>Property Type</th>
+        <th>Sqft</th>
+        <th>Number of Bedrooms</th>
+        <th>Number of Bathrooms</th>
+    </tr>
+    <tr th:each="property : ${properties}">
+        <td th:text="${property.address}"></td>
+        <td th:text="${property.propertyType}"></td>
+        <td th:text="${property.sqft}"></td>
+        <td th:text="${property.numberOfBedrooms}"></td>
+        <td th:text="${property.numberOfBathrooms}"></td>
+    </tr>
+</table>
+
+</body>
+</html>

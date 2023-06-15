@@ -1,12 +1,13 @@
-package controllers;
+package ROICalculatorCapstone.models.controllers;
 
-import models.FinancialDetail;
+import ROICalculatorCapstone.models.FinancialDetail;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import services.FinancialDetailService;
+import ROICalculatorCapstone.services.FinancialDetailService;
 
-@RestController
+@Controller
 @RequestMapping("/financialdetails")
 public class FinancialDetailController {
 

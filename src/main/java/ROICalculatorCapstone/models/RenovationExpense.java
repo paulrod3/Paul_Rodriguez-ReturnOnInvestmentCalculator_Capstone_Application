@@ -1,4 +1,4 @@
-package models;
+package ROICalculatorCapstone.models;
 
 import javax.persistence.*;
 
@@ -22,6 +22,7 @@ public class RenovationExpense {
     }
 
     @ManyToOne
+    @JoinColumn(name = "property_address")
     private Property property;
 
     // Getters and setters
