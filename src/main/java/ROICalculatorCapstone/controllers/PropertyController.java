@@ -13,6 +13,7 @@ public class PropertyController {
     private final PropertyService propertyService;
 
     public PropertyController(PropertyService propertyService) {
+
         this.propertyService = propertyService;
     }
 
@@ -40,24 +41,23 @@ public class PropertyController {
         Property property = propertyService.getPropertyByAddress(address);
         if (property != null) {
             model.addAttribute("property", property);
-            return "property-form"; // Return the property-form.html template to display the property update form
+            return "property_update"; // Return the property-form.html template to display the property update form
         }
         return "redirect:/properties"; // Redirect to the /properties endpoint if property not found
     }
+
 
     @PostMapping("/{address}")
     public String updateProperty(@PathVariable String address, @ModelAttribute("property") Property updatedProperty) {
         Property property = propertyService.getPropertyByAddress(address);
         if (property != null) {
-            // Update the necessary fields of the property with the updatedProperty values
             property.setPropertyType(updatedProperty.getPropertyType());
             property.setSqft(updatedProperty.getSqft());
             property.setNumberOfBedrooms(updatedProperty.getNumberOfBedrooms());
             property.setNumberOfBathrooms(updatedProperty.getNumberOfBathrooms());
-
             propertyService.saveProperty(property);
         }
-        return "redirect:/properties"; // Redirect to the /properties endpoint to display the updated list
+        return "redirect:/properties";
     }
 
     @PostMapping("/{address}/delete")
