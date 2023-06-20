@@ -28,6 +28,9 @@
         <td th:text="${property.numberOfBedrooms}"></td>
         <td th:text="${property.numberOfBathrooms}"></td>
         <td>
+            <a th:href="@{/financialdetails/{address}(address=${property.address})}" class="btn btn-primary">Financial Details</a>
+        </td>
+        <td>
             <form th:action="@{/properties/{address}/delete(address=${property.address})}" method="post">
                 <button type="submit" class="btn btn-danger">Delete</button>
             </form>

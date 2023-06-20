@@ -17,6 +17,18 @@ public class PropertyController {
         this.propertyService = propertyService;
     }
 
+
+    @GetMapping("/{address}")
+    public String showProperty(@PathVariable String address, Model model) {
+        Property property = propertyService.getPropertyByAddress(address);
+        if (property != null) {
+            model.addAttribute("property", property);
+            return "property_detail";
+        } else {
+            // Handle property not found case
+            return "redirect:/properties";
+        }
+    }
     @GetMapping
     public String getAllProperties (Model model){
     List<Property> properties = propertyService.getAllProperties();

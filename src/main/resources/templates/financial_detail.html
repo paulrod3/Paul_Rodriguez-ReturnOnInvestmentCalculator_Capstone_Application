@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Financial Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+<div class="container">
+    <h1>Financial Details</h1>
+
+    <div th:if="${financialDetail != null}">
+        <table class="table">
+            <tbody>
+            <tr>
+                <td>Purchase Price:</td>
+                <td th:text="${financialDetail.purchasePrice}"></td>
+            </tr>
+            <tr>
+                <td>Expected Rehab Costs:</td>
+                <td th:text="${financialDetail.expectedRehabCosts}"></td>
+            </tr>
+            <tr>
+                <td>Interest Rate:</td>
+                <td th:text="${financialDetail.interestRate}"></td>
+            </tr>
+            <tr>
+                <td>Anticipated Length of Project:</td>
+                <td th:text="${financialDetail.anticipatedLengthOfProject}"></td>
+            </tr>
+            <tr>
+                <td>Loan Amount:</td>
+                <td th:text="${financialDetail.loanAmount}"></td>
+            </tr>
+            <tr>
+                <td>Monthly Property Taxes:</td>
+                <td th:text="${financialDetail.monthlyPropertyTaxes}"></td>
+            </tr>
+            <tr>
+                <td>Monthly Insurance:</td>
+                <td th:text="${financialDetail.monthlyInsurance}"></td>
+            </tr>
+            <tr>
+                <td>Monthly Utility Bills:</td>
+                <td th:text="${financialDetail.monthlyUtilityBills}"></td>
+            </tr>
+            <tr>
+                <td>Other Monthly Expenses:</td>
+                <td th:text="${financialDetail.otherMonthlyExpenses}"></td>
+            </tr>
+            <tr>
+                <td>Costs of Sale:</td>
+                <td th:text="${financialDetail.costsOfSale}"></td>
+            </tr>
+            <tr>
+                <td>After Repair Value:</td>
+                <td th:text="${financialDetail.afterRepairValue}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div th:if="${financialDetail == null}">
+        <p>No financial details available for this property.</p>
+    </div>
+
+    <a href="/properties" class="btn btn-primary">Back to Properties</a>
+</div>
+</body>
+
+</html>

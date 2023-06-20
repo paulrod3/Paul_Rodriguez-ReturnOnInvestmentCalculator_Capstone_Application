@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Financial Detail</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+</head>
+<body>
+<h1>Add Financial Detail</h1>
+<form action="/financialdetails" method="post">
+  <label for="purchasePrice">Purchase Price:</label>
+  <input type="number" id="purchasePrice" name="purchasePrice" required>
+
+  <label for="expectedRehabCosts">Expected Rehab Costs:</label>
+  <input type="number" id="expectedRehabCosts" name="expectedRehabCosts" required>
+
+  <label for="interestRate">Interest Rate:</label>
+  <input type="number" id="interestRate" name="interestRate" required>
+
+  <label for="anticipatedLengthOfProject">Anticipated Length of Project (in months):</label>
+  <input type="number" id="anticipatedLengthOfProject" name="anticipatedLengthOfProject" required>
+
+  <label for="loanAmount">Loan Amount:</label>
+  <input type="number" id="loanAmount" name="loanAmount" required>
+
+  <label for="monthlyPropertyTaxes">Monthly Property Taxes:</label>
+  <input type="number" id="monthlyPropertyTaxes" name="monthlyPropertyTaxes" required>
+
+  <label for="monthlyInsurance">Monthly Insurance:</label>
+  <input type="number" id="monthlyInsurance" name="monthlyInsurance" required>
+
+  <label for="monthlyUtilityBills">Monthly Utility Bills:</label>
+  <input type="number" id="monthlyUtilityBills" name="monthlyUtilityBills" required>
+
+  <label for="otherMonthlyExpenses">Other Monthly Expenses:</label>
+  <input type="number" id="otherMonthlyExpenses" name="otherMonthlyExpenses" required>
+
+  <label for="costsOfSale">Costs of Sale:</label>
+  <input type="number" id="costsOfSale" name="costsOfSale" required>
+
+  <label for="afterRepairValue">After Repair Value:</label>
+  <input type="number" id="afterRepairValue" name="afterRepairValue" required>
+
+  <input type="hidden" name="address" value="${property.address}"> <!-- Add the property address as a hidden field -->
+
+  <button type="submit">Save Financial Detail</button>
+</form>
+</body>
+</html>

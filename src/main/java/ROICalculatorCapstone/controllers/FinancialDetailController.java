@@ -1,9 +1,8 @@
 package ROICalculatorCapstone.controllers;
 
 import ROICalculatorCapstone.models.FinancialDetail;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ROICalculatorCapstone.services.FinancialDetailService;
 
@@ -18,39 +17,54 @@ public class FinancialDetailController {
     }
 
     @GetMapping("/{address}")
-    public ResponseEntity<FinancialDetail> getFinancialDetail(@PathVariable String address) {
+    public String getFinancialDetail(@PathVariable String address, Model model) {
         FinancialDetail financialDetail = financialDetailService.getFinancialDetailByAddress(address);
         if (financialDetail != null) {
-            return ResponseEntity.ok(financialDetail);
+            model.addAttribute("financialDetail", financialDetail);
+            return "financial_detail"; // Return the financial-details.html template
         } else {
-            return ResponseEntity.notFound().build();
+            model.addAttribute("financialDetail", new FinancialDetail());
+            return "financial_detail_form"; // Return the financial_detail_form.html template
         }
     }
 
     @PostMapping
-    public ResponseEntity<FinancialDetail> createFinancialDetail(@RequestBody FinancialDetail financialDetail) {
-        FinancialDetail createdFinancialDetail = financialDetailService.saveFinancialDetail(financialDetail);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdFinancialDetail);
+    public String createFinancialDetail(@ModelAttribute("financialDetail") FinancialDetail financialDetail) {
+        financialDetailService.saveFinancialDetail(financialDetail);
+        return "redirect:/financialdetails/" + financialDetail.getAddress(); // Redirect to the updated financial detail page
     }
 
     @PutMapping("/{address}")
-    public ResponseEntity<FinancialDetail> updateFinancialDetail(
-            @PathVariable String address, @RequestBody FinancialDetail financialDetail) {
-        FinancialDetail updatedFinancialDetail = financialDetailService.updateFinancialDetail(financialDetail);
-        if (updatedFinancialDetail != null) {
-            return ResponseEntity.ok(updatedFinancialDetail);
-        } else {
-            return ResponseEntity.notFound().build();
+    public String updateFinancialDetail(@PathVariable String address, @ModelAttribute("financialDetail") FinancialDetail updatedFinancialDetail) {
+        FinancialDetail financialDetail = financialDetailService.getFinancialDetailByAddress(address);
+        if (financialDetail != null) {
+            financialDetail.setPurchasePrice(updatedFinancialDetail.getPurchasePrice());
+            financialDetail.setExpectedRehabCosts(updatedFinancialDetail.getExpectedRehabCosts());
+            financialDetail.setInterestRate(updatedFinancialDetail.getInterestRate());
+            financialDetail.setAnticipatedLengthOfProject(updatedFinancialDetail.getAnticipatedLengthOfProject());
+            financialDetail.setLoanAmount(updatedFinancialDetail.getLoanAmount());
+            financialDetail.setMonthlyPropertyTaxes(updatedFinancialDetail.getMonthlyPropertyTaxes());
+            financialDetail.setMonthlyInsurance(updatedFinancialDetail.getMonthlyInsurance());
+            financialDetail.setMonthlyUtilityBills(updatedFinancialDetail.getMonthlyUtilityBills());
+            financialDetail.setOtherMonthlyExpenses(updatedFinancialDetail.getOtherMonthlyExpenses());
+            financialDetail.setCostsOfSale(updatedFinancialDetail.getCostsOfSale());
+            financialDetail.setAfterRepairValue(updatedFinancialDetail.getAfterRepairValue());
+
+            financialDetailService.saveFinancialDetail(financialDetail);
         }
+        return "redirect:/financialdetails/" + address; // Redirect to the updated financial detail page
     }
 
+
+
     @DeleteMapping("/{address}")
-    public ResponseEntity<Void> deleteFinancialDetail(@PathVariable String address) {
+    public String deleteFinancialDetail(@PathVariable String address) {
         boolean deleted = financialDetailService.deleteFinancialDetail(address);
         if (deleted) {
-            return ResponseEntity.noContent().build();
+            return "redirect:/properties"; // Redirect to the property list page
         } else {
-            return ResponseEntity.notFound().build();
+            // Handle financial detail not found case
+            return "redirect:/properties";
         }
     }
 }
