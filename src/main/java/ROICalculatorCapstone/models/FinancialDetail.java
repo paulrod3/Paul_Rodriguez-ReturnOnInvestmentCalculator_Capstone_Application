@@ -1,6 +1,8 @@
 package ROICalculatorCapstone.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class FinancialDetail {
@@ -19,14 +21,35 @@ public class FinancialDetail {
     private double afterRepairValue;
 
     @OneToOne
-    @MapsId
-    @JoinColumn(name = "address")
+
+    @JoinColumn(name = "property_address")
     private Property property;
     public FinancialDetail() {
         // Default constructor for Hibernate
     }
 
+    public FinancialDetail(String address, double purchasePrice, double expectedRehabCosts,
+                           double interestRate, int anticipatedLengthOfProject, float loanAmount,
+                           double monthlyPropertyTaxes, double monthlyInsurance, double monthlyUtilityBills,
+                           double otherMonthlyExpenses, double costsOfSale, double afterRepairValue,
+                           Property property) {
+        this.address = address;
+        this.purchasePrice = purchasePrice;
+        this.expectedRehabCosts = expectedRehabCosts;
+        this.interestRate = interestRate;
+        this.anticipatedLengthOfProject = anticipatedLengthOfProject;
+        this.loanAmount = loanAmount;
+        this.monthlyPropertyTaxes = monthlyPropertyTaxes;
+        this.monthlyInsurance = monthlyInsurance;
+        this.monthlyUtilityBills = monthlyUtilityBills;
+        this.otherMonthlyExpenses = otherMonthlyExpenses;
+        this.costsOfSale = costsOfSale;
+        this.afterRepairValue = afterRepairValue;
+        this.property = property;
+    }
+
     // Getters and setters
+
 
     public String getAddress() {
         return address;

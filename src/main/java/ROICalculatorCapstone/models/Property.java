@@ -13,10 +13,10 @@ public class Property {
     private int numberOfBedrooms;
     private double numberOfBathrooms;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "property", cascade = CascadeType.ALL)
     private FinancialDetail financialDetail;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "property", cascade = CascadeType.ALL)
     private List<RenovationExpense> expenses;
 
     public Property() {

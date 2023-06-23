@@ -14,12 +14,11 @@ import java.util.List;
 @Transactional
 public class PropertyService {
     private final PropertyRepository propertyRepository;
-    private final RenovationExpenseRepository renovationExpenseRepository;
+
 
     @Autowired
     public PropertyService(PropertyRepository propertyRepository, RenovationExpenseRepository renovationExpenseRepository) {
         this.propertyRepository = propertyRepository;
-        this.renovationExpenseRepository = renovationExpenseRepository;
     }
 
     public List<Property> getAllProperties() {
@@ -56,26 +55,28 @@ public class PropertyService {
     }
 
     public void deleteProperty(String address) {
-        propertyRepository.deleteByAddress(address);
+        propertyRepository.deleteById(address);;
     }
 
     public void addRenovationExpense(String address, RenovationExpense renovationExpense) {
-        Property property = propertyRepository.findById(address).orElse(null);
+        Property property = getPropertyByAddress(address);
         if (property != null) {
-            renovationExpense.setProperty(property);
-            renovationExpenseRepository.save(renovationExpense);
             property.addRenovationExpense(renovationExpense);
+            renovationExpense.setProperty(property);
             propertyRepository.save(property);
         }
     }
 
     public void removeRenovationExpense(String address, Long expenseId) {
-        Property property = propertyRepository.findById(address).orElse(null);
+        Property property = getPropertyByAddress(address);
         if (property != null) {
-            RenovationExpense renovationExpense = renovationExpenseRepository.findById(expenseId).orElse(null);
-            if (renovationExpense != null && renovationExpense.getProperty().equals(property)) {
+            RenovationExpense renovationExpense = property.getExpenses().stream()
+                    .filter(expense -> expense.getId() == expenseId)
+                    .findFirst()
+                    .orElse(null);
+
+            if (renovationExpense != null) {
                 property.removeRenovationExpense(renovationExpense);
-                renovationExpenseRepository.delete(renovationExpense);
                 propertyRepository.save(property);
             }
         }

@@ -39,11 +39,15 @@ public class PropertyController {
     @GetMapping("/new")
     public String showPropertyForm(Model model) {
         model.addAttribute("property", new Property());
-        return "property_form"; // Return the property-form.html template to display the property form
+        model.addAttribute("address", ""); // Add an empty address attribute to the model
+        return "property_form"; // Return the property_form.html template to display the property form
     }
 
     @PostMapping
     public String addProperty(@ModelAttribute("property") Property property) {
+        String trimmedAddress = property.getAddress().trim().toLowerCase(); // Trim and convert to lowercase
+        property.setAddress(trimmedAddress);
+
         propertyService.saveProperty(property);
         return "redirect:/properties"; // Redirect to the /properties endpoint to display the updated list
     }

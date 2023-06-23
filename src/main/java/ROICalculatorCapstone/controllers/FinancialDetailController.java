@@ -1,6 +1,8 @@
 package ROICalculatorCapstone.controllers;
 
 import ROICalculatorCapstone.models.FinancialDetail;
+import ROICalculatorCapstone.models.Property;
+import ROICalculatorCapstone.services.PropertyService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -10,10 +12,14 @@ import ROICalculatorCapstone.services.FinancialDetailService;
 @RequestMapping("/financialdetails")
 public class FinancialDetailController {
 
-    private final FinancialDetailService financialDetailService;
 
-    public FinancialDetailController(FinancialDetailService financialDetailService) {
+
+    private final FinancialDetailService financialDetailService;
+    private final PropertyService propertyService;
+
+    public FinancialDetailController(FinancialDetailService financialDetailService, PropertyService propertyService) {
         this.financialDetailService = financialDetailService;
+        this.propertyService = propertyService;
     }
 
     @GetMapping("/{address}")
@@ -28,14 +34,25 @@ public class FinancialDetailController {
         }
     }
 
-    @PostMapping
-    public String createFinancialDetail(@ModelAttribute("financialDetail") FinancialDetail financialDetail) {
-        financialDetailService.saveFinancialDetail(financialDetail);
-        return "redirect:/financialdetails/" + financialDetail.getAddress(); // Redirect to the updated financial detail page
+
+    @PostMapping("/create")
+    public String createFinancialDetail(@ModelAttribute("financialDetail") FinancialDetail financialDetail,
+                                        Model model) {
+        Property property = propertyService.getPropertyByAddress(financialDetail.getAddress());
+
+        if (property != null) {
+            financialDetail.setProperty(property);
+            financialDetailService.saveFinancialDetail(financialDetail); // this is the line that gives the problem
+            return "financial_detail";
+        } else {
+            model.addAttribute("address", financialDetail.getAddress());
+            throw new IllegalArgumentException("Invalid property address: " + financialDetail.getAddress());
+        }
     }
 
     @PutMapping("/{address}")
-    public String updateFinancialDetail(@PathVariable String address, @ModelAttribute("financialDetail") FinancialDetail updatedFinancialDetail) {
+    public String updateFinancialDetail(@PathVariable String address, @ModelAttribute("financialDetail")
+    FinancialDetail updatedFinancialDetail) {
         FinancialDetail financialDetail = financialDetailService.getFinancialDetailByAddress(address);
         if (financialDetail != null) {
             financialDetail.setPurchasePrice(updatedFinancialDetail.getPurchasePrice());
@@ -54,7 +71,6 @@ public class FinancialDetailController {
         }
         return "redirect:/financialdetails/" + address; // Redirect to the updated financial detail page
     }
-
 
 
     @DeleteMapping("/{address}")

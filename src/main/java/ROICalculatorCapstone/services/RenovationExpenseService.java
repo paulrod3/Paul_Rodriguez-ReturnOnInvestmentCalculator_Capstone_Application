@@ -13,12 +13,12 @@ import java.util.List;
 @Service
 public class RenovationExpenseService {
     private final RenovationExpenseRepository renovationExpenseRepository;
-    private final PropertyRepository propertyRepository;
+    private final PropertyService propertyService;
 
     @Autowired
-    public RenovationExpenseService(RenovationExpenseRepository renovationExpenseRepository, PropertyRepository propertyRepository) {
+    public RenovationExpenseService(RenovationExpenseRepository renovationExpenseRepository, PropertyService propertyService) {
         this.renovationExpenseRepository = renovationExpenseRepository;
-        this.propertyRepository = propertyRepository;
+        this.propertyService = propertyService;
     }
 
     public RenovationExpense getRenovationExpenseById(Long id) {
@@ -43,14 +43,11 @@ public class RenovationExpenseService {
     }
 
     public List<RenovationExpense> getRenovationExpensesByPropertyAddress(String address) {
-        Property property = propertyRepository.findById(address).orElse(null);
+        Property property = propertyService.getPropertyByAddress(address);
         if (property != null) {
             return property.getExpenses();
         }
         return Collections.emptyList();
     }
 
-    public Property getPropertyByAddress(String address) {
-        return propertyRepository.findById(address).orElse(null);
-    }
 }
