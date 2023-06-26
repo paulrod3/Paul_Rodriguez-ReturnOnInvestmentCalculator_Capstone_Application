@@ -6,7 +6,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.7.11</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
     <groupId>com.perscholas</groupId>
     <artifactId>Paul_Rodriguez_ReturnOnInvestmentCalculator_capstone</artifactId>
@@ -19,6 +19,7 @@
         <maven.compiler.target>19</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
     <dependencies>
 
         <dependency>
@@ -65,7 +66,6 @@
         </dependency>
 
     </dependencies>
-
 
     <build>
         <plugins>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Update Financial Detail</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+<div class="container">
+  <h1>Update Financial Detail</h1>
+
+  <form th:action="@{/financialdetails/{address}(address=${financialDetail.address})}" method="post">
+    <div class="form-group">
+      <label for="purchasePrice">Purchase Price:</label>
+      <input type="text" id="purchasePrice" name="purchasePrice" class="form-control"
+             th:value="${financialDetail.purchasePrice}" />
+    </div>
+
+    <div class="form-group">
+      <label for="expectedRehabCosts">Expected Rehab Costs:</label>
+      <input type="text" id="expectedRehabCosts" name="expectedRehabCosts" class="form-control"
+             th:value="${financialDetail.expectedRehabCosts}" />
+    </div>
+
+    <div class="form-group">
+      <label for="interestRate">Interest Rate:</label>
+      <input type="text" id="interestRate" name="interestRate" class="form-control"
+             th:value="${financialDetail.interestRate}" />
+    </div>
+
+    <div class="form-group">
+      <label for="anticipatedLengthOfProject">Anticipated Length of Project:</label>
+      <input type="text" id="anticipatedLengthOfProject" name="anticipatedLengthOfProject" class="form-control"
+             th:value="${financialDetail.anticipatedLengthOfProject}" />
+    </div>
+
+    <div class="form-group">
+      <label for="loanAmount">Loan Amount:</label>
+      <input type="text" id="loanAmount" name="loanAmount" class="form-control"
+             th:value="${financialDetail.loanAmount}" />
+    </div>
+
+    <div class="form-group">
+      <label for="monthlyPropertyTaxes">Monthly Property Taxes:</label>
+      <input type="text" id="monthlyPropertyTaxes" name="monthlyPropertyTaxes" class="form-control"
+             th:value="${financialDetail.monthlyPropertyTaxes}" />
+    </div>
+
+    <div class="form-group">
+      <label for="monthlyInsurance">Monthly Insurance:</label>
+      <input type="text" id="monthlyInsurance" name="monthlyInsurance" class="form-control"
+             th:value="${financialDetail.monthlyInsurance}" />
+    </div>
+
+    <div class="form-group">
+      <label for="monthlyUtilityBills">Monthly Utility Bills:</label>
+      <input type="text" id="monthlyUtilityBills" name="monthlyUtilityBills" class="form-control"
+             th:value="${financialDetail.monthlyUtilityBills}" />
+    </div>
+
+    <div class="form-group">
+      <label for="otherMonthlyExpenses">Other Monthly Expenses:</label>
+      <input type="text" id="otherMonthlyExpenses" name="otherMonthlyExpenses" class="form-control"
+             th:value="${financialDetail.otherMonthlyExpenses}" />
+    </div>
+
+    <div class="form-group">
+      <label for="costsOfSale">Costs of Sale:</label>
+      <input type="text" id="costsOfSale" name="costsOfSale" class="form-control"
+             th:value="${financialDetail.costsOfSale}" />
+    </div>
+
+    <div class="form-group">
+      <label for="afterRepairValue">After Repair Value:</label>
+      <input type="text" id="afterRepairValue" name="afterRepairValue" class="form-control"
+             th:value="${financialDetail.afterRepairValue}" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update</button>
+  </form>
+
+  <a href="/financialdetails/{address}" class="btn btn-secondary">Cancel</a>
+</div>
+</body>
+
+</html>

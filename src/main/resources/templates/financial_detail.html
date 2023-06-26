@@ -65,6 +65,14 @@
             </tr>
             </tbody>
         </table>
+        <div>
+            <a th:href="@{/financialdetails/{address}/update(address=${financialDetail.address})}"
+               class="btn btn-primary">Update</a>
+            <form th:action="@{/financialdetails/{address}(address=${financialDetail.address})}" method="post">
+                <input type="hidden" name="_method" value="delete" />
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+        </div>
     </div>
 
     <div th:if="${financialDetail == null}">

@@ -50,7 +50,17 @@ public class FinancialDetailController {
         }
     }
 
-    @PutMapping("/{address}")
+    @GetMapping("/{address}/update")
+    public String showUpdateForm(@PathVariable String address, Model model) {
+        FinancialDetail financialDetail = financialDetailService.getFinancialDetailByAddress(address);
+        if (financialDetail != null) {
+            model.addAttribute("financialDetail", financialDetail);
+            return "financial_detail_update"; // Return the financial_detail_update.html template
+        }
+        return "redirect:/financialdetails"; // Redirect to the financial details list if not found
+    }
+
+    @PostMapping("/{address}")
     public String updateFinancialDetail(@PathVariable String address, @ModelAttribute("financialDetail")
     FinancialDetail updatedFinancialDetail) {
         FinancialDetail financialDetail = financialDetailService.getFinancialDetailByAddress(address);
