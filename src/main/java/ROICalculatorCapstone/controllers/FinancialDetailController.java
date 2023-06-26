@@ -13,7 +13,6 @@ import ROICalculatorCapstone.services.FinancialDetailService;
 public class FinancialDetailController {
 
 
-
     private final FinancialDetailService financialDetailService;
     private final PropertyService propertyService;
 
@@ -90,7 +89,8 @@ public class FinancialDetailController {
             return "redirect:/properties"; // Redirect to the property list page
         } else {
             // Handle financial detail not found case
-            return "redirect:/properties";
+            return "redirect:/financialdetails/{address}"; // Redirect back to the financial detail page
         }
     }
+
 }

@@ -68,7 +68,7 @@
         <div>
             <a th:href="@{/financialdetails/{address}/update(address=${financialDetail.address})}"
                class="btn btn-primary">Update</a>
-            <form th:action="@{/financialdetails/{address}(address=${financialDetail.address})}" method="post">
+            <form th:action="@{/financialdetails/{address}(address=${financialDetail.address})}" method="post" onsubmit="return confirm('Are you sure you want to delete this financial detail?');">
                 <input type="hidden" name="_method" value="delete" />
                 <button type="submit" class="btn btn-danger">Delete</button>
             </form>
