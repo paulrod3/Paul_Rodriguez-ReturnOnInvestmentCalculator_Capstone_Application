@@ -41,7 +41,7 @@ public class FinancialDetailController {
 
         if (property != null) {
             financialDetail.setProperty(property);
-            financialDetailService.saveFinancialDetail(financialDetail); // this is the line that gives the problem
+            financialDetailService.saveFinancialDetail(financialDetail);
             return "financial_detail";
         } else {
             model.addAttribute("address", financialDetail.getAddress());

@@ -10,7 +10,6 @@
 <body>
 <h1>Property Details</h1>
 <a href="/properties/new" class="btn btn-primary">Add Property</a>
-<a href="/renovationexpenses/new" class="btn btn-primary">Add Renovation Expense</a>
 <table>
     <tr>
         <th>Address</th>
@@ -30,6 +29,9 @@
         <td th:text="${property.numberOfBathrooms}"></td>
         <td>
             <a th:href="@{/financialdetails/{address}(address=${property.address})}" class="btn btn-primary">Financial Details</a>
+        </td>
+        <td>
+            <a th:href="@{/renovationexpenses/property/{address}(address=${property.address})}" class="btn btn-primary">Renovation Expense</a>
         </td>
         <td>
             <form th:action="@{/properties/{address}/delete(address=${property.address})}" method="post">

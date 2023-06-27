@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Renovation Expense Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h1>Renovation Expense Details</h1>
+
+    <div th:if="${property != null}">
+        <h2>Property Details</h2>
+        <table class="table">
+            <tbody>
+            <tr>
+                <td>Address:</td>
+                <td th:text="${property.address}"></td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <div th:if="${renovationExpenses != null and renovationExpenses.size() > 0}">
+        <h2>Renovation Expenses</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Description</th>
+                <th>Amount</th>
+                <th>Date of Purchase</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="expense : ${renovationExpenses}">
+                <td th:text="${expense.description}"></td>
+                <td th:text="${expense.amount}"></td>
+                <td th:text="${expense.dateOfPurchase}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div th:if="${renovationExpenses == null or renovationExpenses.size() == 0}">
+        <p>No renovation expenses available.</p>
+    </div>
+
+    <a href="/properties" class="btn btn-primary">Back to Properties</a>
+    <a href="/renovationexpenses/property/{address}" class="btn btn-primary">Add Renovation Expense</a>
+</div>
+</body>
+</html>
