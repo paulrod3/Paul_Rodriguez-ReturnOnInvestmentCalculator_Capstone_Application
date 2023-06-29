@@ -7,7 +7,7 @@ public class RenovationExpense {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String typeOfExpense;
+    private String description;
     private double amount;
     private String dateOfPurchase;
 
@@ -15,14 +15,14 @@ public class RenovationExpense {
         // Default constructor for Hibernate
     }
 
-    public RenovationExpense(String typeOfExpense, double amount, String dateOfPurchase) {
-        this.typeOfExpense = typeOfExpense;
+    public RenovationExpense(String description, double amount, String dateOfPurchase) {
+        this.description = description;
         this.amount = amount;
         this.dateOfPurchase = dateOfPurchase;
     }
 
     @ManyToOne
-    @JoinColumn(name = "property_address")
+    @JoinColumn(name = "property_id")
     private Property property;
 
     // Getters and setters
@@ -41,12 +41,12 @@ public class RenovationExpense {
         this.id = id;
     }
 
-    public String getTypeOfExpense() {
-        return typeOfExpense;
+    public String getDescription() {
+        return description;
     }
 
-    public void setTypeOfExpense(String typeOfExpense) {
-        this.typeOfExpense = typeOfExpense;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public double getAmount() {

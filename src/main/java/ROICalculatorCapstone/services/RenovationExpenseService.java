@@ -13,12 +13,9 @@ import java.util.List;
 @Service
 public class RenovationExpenseService {
     private final RenovationExpenseRepository renovationExpenseRepository;
-    private final PropertyService propertyService;
 
-    @Autowired
-    public RenovationExpenseService(RenovationExpenseRepository renovationExpenseRepository, PropertyService propertyService) {
+    public RenovationExpenseService(RenovationExpenseRepository renovationExpenseRepository) {
         this.renovationExpenseRepository = renovationExpenseRepository;
-        this.propertyService = propertyService;
     }
 
     public RenovationExpense getRenovationExpenseById(Long id) {
@@ -26,10 +23,6 @@ public class RenovationExpenseService {
     }
 
     public RenovationExpense saveRenovationExpense(RenovationExpense renovationExpense) {
-        return renovationExpenseRepository.save(renovationExpense);
-    }
-
-    public RenovationExpense updateRenovationExpense(RenovationExpense renovationExpense) {
         return renovationExpenseRepository.save(renovationExpense);
     }
 
@@ -43,11 +36,6 @@ public class RenovationExpenseService {
     }
 
     public List<RenovationExpense> getRenovationExpensesByPropertyAddress(String address) {
-        Property property = propertyService.getPropertyByAddress(address);
-        if (property != null) {
-            return property.getExpenses();
-        }
-        return Collections.emptyList();
+        return renovationExpenseRepository.findByPropertyAddress(address);
     }
-
 }

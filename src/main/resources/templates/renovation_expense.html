@@ -49,7 +49,7 @@
     </div>
 
     <a href="/properties" class="btn btn-primary">Back to Properties</a>
-    <a href="/renovationexpenses/property/{address}" class="btn btn-primary">Add Renovation Expense</a>
+    <a th:href="@{/renovationexpenses/property/{address}/add(address=${property.address})}" class="btn btn-primary">Add Renovation Expense</a>
 </div>
 </body>
 </html>

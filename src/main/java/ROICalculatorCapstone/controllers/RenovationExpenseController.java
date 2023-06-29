@@ -29,13 +29,13 @@ public class RenovationExpenseController {
         RenovationExpense renovationExpense = renovationExpenseService.getRenovationExpenseById(id);
         if (renovationExpense != null) {
             model.addAttribute("renovationExpense", renovationExpense);
-            return "renovation_expense_details"; // Return the HTML template to display the renovation expense details
+            return "renovation_expense"; // Return the HTML template to display the renovation expense details
         } else {
             return "redirect:/renovationexpenses"; // Redirect to the list of renovation expenses if not found
         }
     }
 
-    @GetMapping("/property/{address}")
+    @GetMapping("/property/{address}") //The path starts here
     public String getRenovationExpensesByPropertyAddress(@PathVariable String address, Model model) {
         List<RenovationExpense> renovationExpenses = renovationExpenseService.getRenovationExpensesByPropertyAddress(address);
         Property property = propertyService.getPropertyByAddress(address);
@@ -44,18 +44,30 @@ public class RenovationExpenseController {
             model.addAttribute("property", property);
             return "renovation_expense"; // Return the HTML template to display the renovation expenses for a property
         } else {
-            return "redirect:/renovationexpenses"; // Redirect to the list of renovation expenses if property not found
+            return "redirect:/renovation_expense"; // Redirect to the list of renovation expenses if property not found
         }
     }
 
+    @GetMapping("/property/{address}/add")
+    public String showAddRenovationExpenseForm(@PathVariable("address") String address, Model model) {
+        model.addAttribute("renovationExpense", new RenovationExpense());
+        return "Add_Renovation_Expense"; // Return the HTML template name
+    }
+
     @PostMapping("/property/{address}")
-    public String createRenovationExpense(@PathVariable String address, @ModelAttribute("renovationExpense") RenovationExpense renovationExpense) {
+    public String createRenovationExpense(@PathVariable("address") String address,
+                                          @ModelAttribute("renovationExpense") RenovationExpense renovationExpense, Model model) {
         Property property = propertyService.getPropertyByAddress(address);
         if (property != null) {
             renovationExpense.setProperty(property);
             renovationExpenseService.saveRenovationExpense(renovationExpense);
+            model.addAttribute("property", property);
+            model.addAttribute("renovationExpense", renovationExpense);
+            List<RenovationExpense> renovationExpenses = renovationExpenseService.getRenovationExpensesByPropertyAddress(address);
+            return "renovation_expense";
         }
-        return "redirect:/renovationexpenses/property/{address}"; // Redirect to the renovation expenses for the property
+        else
+        return "Add_Renovation_Expense"; // Redirect to the renovation expenses for the property
     }
 
     @DeleteMapping("/{id}")

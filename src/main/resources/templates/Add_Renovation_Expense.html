@@ -12,19 +12,24 @@
 <div class="container">
     <h1>Add Renovation Expense</h1>
 
-    <form th:action="@{/renovationexpenses/{address}(address=${address})}" method="post">
+    <form th:action="@{/renovationexpenses/property/{address}(address=${address})}" method="post">
         <div class="form-group">
-            <label for="description">Description:</label>
-            <input type="text" class="form-control" id="description" name="description" required>
+            <label for="date">Date of Purchase:</label>
+            <input type="date" id="date" name="dateOfPurchase" class="form-control" required/>
         </div>
         <div class="form-group">
             <label for="amount">Amount:</label>
-            <input type="number" class="form-control" id="amount" name="amount" required>
+            <input type="number" id="amount" name="amount" class="form-control" required/>
         </div>
-        <button type="submit" class="btn btn-primary">Add Expense</button>
-    </form>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description" class="form-control" required/>
+        </div>
+        <input type="text" name="address" th:value="${address}" />
 
-    <a href="/renovationexpenses/property/{address}" class="btn btn-secondary">Cancel</a>
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a href="/properties" class="btn btn-secondary">Cancel</a>
+    </form>
 </div>
 </body>
 
