@@ -39,6 +39,10 @@
                 <td th:text="${expense.description}"></td>
                 <td th:text="${expense.amount}"></td>
                 <td th:text="${expense.dateOfPurchase}"></td>
+                <td>
+                    <a th:href="@{/renovationexpenses/{id}/update(id=${expense.id})}" class="btn btn-primary">Update</a>
+                    <a th:href="@{/renovationexpenses/{id}/delete(id=${expense.id})}" class="btn btn-danger">Delete</a>
+                </td>
             </tr>
             </tbody>
         </table>
@@ -49,7 +53,7 @@
     </div>
 
     <a href="/properties" class="btn btn-primary">Back to Properties</a>
-    <a th:href="@{/renovationexpenses/property/{address}/add(address=${property.address})}" class="btn btn-primary">Add Renovation Expense</a>
+    <a th:href="@{/renovationexpenses/property/{address}/add(address=${property?.address})}" class="btn btn-primary">Add Renovation Expense</a>
 </div>
 </body>
 </html>

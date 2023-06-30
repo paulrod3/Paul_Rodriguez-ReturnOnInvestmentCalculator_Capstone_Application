@@ -64,13 +64,38 @@ public class RenovationExpenseController {
             model.addAttribute("property", property);
             model.addAttribute("renovationExpense", renovationExpense);
             List<RenovationExpense> renovationExpenses = renovationExpenseService.getRenovationExpensesByPropertyAddress(address);
-            return "renovation_expense";
-        }
-        else
-        return "Add_Renovation_Expense"; // Redirect to the renovation expenses for the property
+            return "redirect:/renovationexpenses/property/" + address;
+        } else
+            return "Add_Renovation_Expense"; // Redirect to the renovation expenses for the property
     }
 
-    @DeleteMapping("/{id}")
+    @GetMapping("/{id}/update")
+    public String showUpdateRenovationExpenseForm(@PathVariable Long id,Model model) {
+        RenovationExpense renovationExpense = renovationExpenseService.getRenovationExpenseById(id);
+        if (renovationExpense != null) {
+            model.addAttribute("renovationExpense", renovationExpense);
+            return "update_renovation_expense"; // Return the HTML template for updating the renovation expense
+        } else {
+            return "redirect:/renovationexpenses"; // Redirect to the list of renovation expenses if not found
+        }
+    }
+
+    @PostMapping("/{id}/update")
+    public String updateRenovationExpense(@PathVariable Long id, @ModelAttribute("renovationExpense") RenovationExpense updatedRenovationExpense) {
+        RenovationExpense renovationExpense = renovationExpenseService.getRenovationExpenseById(id);
+        Property property = propertyService.getPropertyByAddress("address");
+        if (renovationExpense != null) {
+            renovationExpense.setDescription(updatedRenovationExpense.getDescription());
+            renovationExpense.setAmount(updatedRenovationExpense.getAmount());
+            renovationExpense.setDateOfPurchase(updatedRenovationExpense.getDateOfPurchase());
+            renovationExpenseService.saveRenovationExpense(renovationExpense);
+            String address = renovationExpense.getProperty().getAddress();
+            return "redirect:/renovationexpenses/property/" + address;
+        }
+        return "redirect:/renovationexpenses"; // Redirect to the updated renovation expense details page
+    }
+
+    @GetMapping("/{id}/delete")
     public String deleteRenovationExpense(@PathVariable Long id) {
         RenovationExpense renovationExpense = renovationExpenseService.getRenovationExpenseById(id);
         if (renovationExpense != null) {
@@ -82,4 +107,5 @@ public class RenovationExpenseController {
         }
         return "redirect:/renovationexpenses"; // Redirect to the list of renovation expenses if not found
     }
+
 }

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Renovation Expense</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h1>Update Renovation Expense</h1>
+
+    <form th:action="@{/renovationexpenses/{id}/update(id=${renovationExpense.id})}" method="post">
+        <input type="hidden" name="id" th:value="${renovationExpense.id}" />
+
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description" class="form-control" required
+                   th:value="${renovationExpense.description}" />
+        </div>
+
+        <div class="form-group">
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" name="amount" class="form-control" required
+                   th:value="${renovationExpense.amount}" />
+        </div>
+
+        <div class="form-group">
+            <label for="dateOfPurchase">Date of Purchase:</label>
+            <input type="date" id="dateOfPurchase" name="dateOfPurchase" class="form-control" required
+                   th:value="${renovationExpense.dateOfPurchase}" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a href="/properties" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+</body>
+</html>
