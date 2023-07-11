@@ -2,14 +2,14 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1,shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
-   
+
     <!--==================== CSS ====================-->
     <link rel="stylesheet" href="../static/style.css" th:href="@{style.css}">
 
@@ -19,7 +19,7 @@
     <title>ROI Calculator</title>
 </head>
 <body>
-    <!--==================== HEADER ====================-->
+<!--==================== HEADER ====================-->
 <header class="header" id="header">
     <nav class="nav container">
         <a href="#" class="nav__logo">R&C Realty Group</a>
@@ -27,7 +27,7 @@
         <div class="nav__menu" id="nav-menu">
             <ul class="nav__list grid">
                 <li class="nav__item">
-                    <a href="#" class="nav__link">
+                    <a href="home.html" class="nav__link">
                         <i class="uil uil-estate nav__icon"></i> Home
                     </a>
                 </li>
@@ -38,7 +38,7 @@
 
                 </li>
                 <li class="nav__item">
-                    <a href="contactus.html" class="nav__link">
+                    <a href="contact.html" class="nav__link">
                         <i class="uil uil-message nav__icon"></i> ContactUs
 
                     </a>
@@ -54,35 +54,61 @@
             </div>
         </div>
     </nav>
- </header>
+</header>
 
-<div class="wrapper">
-    <section class="contact section" id="contact">
-        <h2 class="section__title">Add Renovation Expense</h2>
 
-        <form th:action="@{/renovationexpenses/property/{address}(address=${address})}" method="post"class="expense-form">
-            <div class="form-group">
-                <label for="date">Date of Purchase:</label>
-                <input type="date" id="date" name="dateOfPurchase" class="form-control" required/>
-         </div>
-         <div class="form-group">
-                <label for="amount">Amount:</label>
-                <input type="number" id="amount" name="amount" class="form-control" required/>
-         </div>
-            <div class="form-group">
-             <label for="description">Description:</label>
-                <input type="text" id="description" name="description" class="form-control" required/>
-         </div>
-            <input type="text" name="address" th:value="${address}" />
+<!--==================== CONTACT ME ====================-->
+<section class="contact section" id="contact">
+    <h2 class="section__title">Contact Me</h2>
+    <span class="section__subtitle">Get in touch!</span>
 
-            <button type="submit" class="btn btn-primary">Save</button>
-            <a href="/properties" class="btn btn-secondary">Cancel</a>
+    <div class="contact__container container grid">
+        <div>
+            <div class="contact__information">
+                <i class="uil uil-mobile-android contact__icon"></i>
+
+                <div>
+                    <h3 class="contact__title">Call</h3>
+                    <span class="contact__subtitle">210-665-1917</span>
+                </div>
+            </div>
+            <div class="contact__information">
+                <i class="uil uil-envelope-minus contact__icon"></i>
+
+                <div>
+                    <h3 class="contact__title">Email</h3>
+                    <span class="contact__subtitle">Paul_rodriguez3@yahoo.com</span>
+                </div>
+            </div>
+        </div>
+        <form action="" class="contact__form grid">
+            <div class="contact__inputs grid">
+                <div class="contact__content">
+                    <label for="" class="contact__label">Name</label>
+                    <input type="text" class="contact__input">
+                </div>
+                <div class="contact__content">
+                    <label for="" class="contact__label">Email</label>
+                    <input type="email" class="contact__input">
+                </div>
+            </div>
+            <div class="contact__content">
+                <label for="" class="contact__label">Message</label>
+                <textarea name="" id="" cols="0" rows="7" class="contact__input"></textarea>
+            </div>
+            <div>
+                <a href="#" class="button button--flex">
+                    Send Message
+                    <i class="uil uil-message button__icon"></i>
+                </a>
+            </div>
         </form>
-    </section>
-</div>
+    </div>
+
+</section>
 
 <!--==================== FOOTER ====================-->
- <footer class="footer">
+<footer class="footer">
     <div class="footer__bg">
         <div class="footer__container container grid">
             <div>
@@ -92,13 +118,13 @@
 
             <ul class="footer__links">
                 <li>
-                    <a href="#" class="footer__links">Home</a>
+                    <a href="index.html" class="footer__links">Home</a>
                 </li>
                 <li>
-                    <a href="#" class="footer__links">Property Details</a>
+                    <a href="skills.html" class="footer__links">Property Details</a>
                 </li>
                 <li>
-                    <a href="contactus.html" class="footer__links">ContactUs</a>
+                    <a href="contact.html" class="footer__links">ContactUs</a>
                 </li>
             </ul>
 
@@ -112,7 +138,5 @@
             </div>
         </div>
     </div>
-</footer>
-</body>
 
-</html>
+</footer>

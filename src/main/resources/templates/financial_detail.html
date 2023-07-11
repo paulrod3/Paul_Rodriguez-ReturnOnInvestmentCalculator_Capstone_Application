@@ -1,86 +1,193 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
 <head>
-    <meta charset="UTF-8">
-    <title>Financial Details</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no"/>
+
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous"/>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css"/>
+
+    <!--==================== UNICONS ====================-->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+
+    <!--==================== CSS ====================-->
+    <link rel="stylesheet"
+          type="text/css"
+          th:href="@{style.css}">
+
+    <title>ROI Calculator</title>
 </head>
-
 <body>
-<div class="container">
-    <h1>Financial Details</h1>
+<!--==================== HEADER ====================-->
+<header class="header" id="header">
+    <nav class="nav container">
+        <a href="#" class="nav__logo">R&C Realty Group</a>
 
-    <div th:if="${financialDetail != null}">
-        <table class="table">
-            <tbody>
-            <tr>
-                <td>Address:</td>
-                <td th:text="${financialDetail.address}"></td>
-            </tr>
-            <tr>
-                <td>Purchase Price:</td>
-                <td th:text="${financialDetail.purchasePrice}"></td>
-            </tr>
-            <tr>
-                <td>Expected Rehab Costs:</td>
-                <td th:text="${financialDetail.expectedRehabCosts}"></td>
-            </tr>
-            <tr>
-                <td>Interest Rate:</td>
-                <td th:text="${financialDetail.interestRate}"></td>
-            </tr>
-            <tr>
-                <td>Anticipated Length of Project:</td>
-                <td th:text="${financialDetail.anticipatedLengthOfProject}"></td>
-            </tr>
-            <tr>
-                <td>Loan Amount:</td>
-                <td th:text="${financialDetail.loanAmount}"></td>
-            </tr>
-            <tr>
-                <td>Monthly Property Taxes:</td>
-                <td th:text="${financialDetail.monthlyPropertyTaxes}"></td>
-            </tr>
-            <tr>
-                <td>Monthly Insurance:</td>
-                <td th:text="${financialDetail.monthlyInsurance}"></td>
-            </tr>
-            <tr>
-                <td>Monthly Utility Bills:</td>
-                <td th:text="${financialDetail.monthlyUtilityBills}"></td>
-            </tr>
-            <tr>
-                <td>Other Monthly Expenses:</td>
-                <td th:text="${financialDetail.otherMonthlyExpenses}"></td>
-            </tr>
-            <tr>
-                <td>Costs of Sale:</td>
-                <td th:text="${financialDetail.costsOfSale}"></td>
-            </tr>
-            <tr>
-                <td>After Repair Value:</td>
-                <td th:text="${financialDetail.afterRepairValue}"></td>
-            </tr>
-            </tbody>
-        </table>
-        <div>
-            <a th:href="@{/financialdetails/{address}/update(address=${financialDetail.address})}"
-               class="btn btn-primary">Update</a>
-            <form th:action="@{/financialdetails/{address}(address=${financialDetail.address})}" method="post" onsubmit="return confirm('Are you sure you want to delete this financial detail?');">
-                <input type="hidden" name="_method" value="delete" />
-                <button type="submit" class="btn btn-danger">Delete</button>
-            </form>
+        <div class="nav__menu" id="nav-menu">
+            <ul class="nav__list grid">
+                <li class="nav__item">
+                    <a href="#" class="nav__link">
+                        <i class="uil uil-estate nav__icon"></i> Home
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="/properties" class="nav__link">
+                        <i class="uil uil-user nav__icon"></i> Property Details
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="contactus.html" class="nav__link">
+                        <i class="uil uil-message nav__icon"></i> ContactUs
+                    </a>
+                </li>
+            </ul>
+            <i class="uil uil-times nav__close" id="nav-close"></i>
+        </div>
+        <div class="nav__btns">
+            <!-- Theme Change Button -->
+            <i class="uil uil-moon change-theme" id="theme-button"></i>
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="uil uil-apps"></i>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!--==================== financial detail html ====================-->
+<div class="wrapper">
+    <section class="skills section" id="skills">
+        <div class="container">
+            <h2 class="section__title">Financial Details</h2>
+
+            <div th:if="${financialDetail != null}">
+                <table class="table table table-hover">
+                    <tbody>
+                    <tr>
+                        <td>Address:</td>
+                        <td th:text="${financialDetail.address}"></td>
+                    </tr>
+                    <tr>
+                        <td>Purchase Price:</td>
+                        <td th:text="${financialDetail.purchasePrice}"></td>
+                    </tr>
+                    <tr>
+                        <td>Expected Rehab Costs:</td>
+                        <td th:text="${financialDetail.expectedRehabCosts}"></td>
+                    </tr>
+                    <tr>
+                        <td>Interest Rate:</td>
+                        <td th:text="${financialDetail.interestRate}"></td>
+                    </tr>
+                    <tr>
+                        <td>Anticipated Length of Project:</td>
+                        <td
+                                th:text="${financialDetail.anticipatedLengthOfProject}"
+                        ></td>
+                    </tr>
+                    <tr>
+                        <td>Loan Amount:</td>
+                        <td th:text="${financialDetail.loanAmount}"></td>
+                    </tr>
+                    <tr>
+                        <td>Monthly Property Taxes:</td>
+                        <td th:text="${financialDetail.monthlyPropertyTaxes}"></td>
+                    </tr>
+                    <tr>
+                        <td>Monthly Insurance:</td>
+                        <td th:text="${financialDetail.monthlyInsurance}"></td>
+                    </tr>
+                    <tr>
+                        <td>Monthly Utility Bills:</td>
+                        <td th:text="${financialDetail.monthlyUtilityBills}"></td>
+                    </tr>
+                    <tr>
+                        <td>Other Monthly Expenses:</td>
+                        <td th:text="${financialDetail.otherMonthlyExpenses}"></td>
+                    </tr>
+                    <tr>
+                        <td>Costs of Sale:</td>
+                        <td th:text="${financialDetail.costsOfSale}"></td>
+                    </tr>
+                    <tr>
+                        <td>After Repair Value:</td>
+                        <td th:text="${financialDetail.afterRepairValue}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="fin-detail-buttons-container">
+                    <a
+                            th:href="@{/financialdetails/{address}/update(address=${financialDetail.address})}"
+                            class="btn btn-secondary"
+                    >Update</a
+                    >
+                    <form
+                            th:action="@{/financialdetails/{address}(address=${financialDetail.address})}"
+                            method="post"
+                            onsubmit="return confirm('Are you sure you want to delete this financial detail?');"
+                    >
+                        <input type="hidden" name="_method" value="delete"/>
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+            </div>
+
+            <div th:if="${financialDetail == null}">
+                <p>No financial details available for this property.</p>
+            </div>
+
+            <a href="/properties" class="btn btn-primary">Back to Properties</a>
+        </div>
+    </section>
+</div>
+<!--==================== FOOTER ====================-->
+<footer class="footer">
+    <div class="footer__bg">
+        <div class="footer__container container grid">
+            <div>
+                <h1 class="footer__title">R&C Realty Group</h1>
+            </div>
+
+            <ul class="footer__links">
+                <li>
+                    <a href="#" class="footer__links">Home</a>
+                </li>
+                <li>
+                    <a href="#" class="footer__links">Property Details</a>
+                </li>
+                <li>
+                    <a href="contactus.html" class="footer__links">ContactUs</a>
+                </li>
+            </ul>
+
+            <div class="footer__socials">
+                <a href="https://www.facebook.com" target="_blank" class="footer__social">
+                    <i class="uil uil-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com" target="_blank" class="footer__social">
+                    <i class="uil uil-instagram"></i>
+                </a>
+            </div>
         </div>
     </div>
+</footer>
 
-    <div th:if="${financialDetail == null}">
-        <p>No financial details available for this property.</p>
-    </div>
-
-    <a href="/properties" class="btn btn-primary">Back to Properties</a>
-</div>
+<!--==================== MAIN JS ====================-->
+<script src="#"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<!-- Bootstrap JavaScript (Popper.js and Bootstrap) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.min.js"></script>
 </body>
-
 </html>
