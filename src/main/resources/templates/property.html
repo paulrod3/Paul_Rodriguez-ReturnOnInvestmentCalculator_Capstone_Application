@@ -16,6 +16,8 @@
     <!--==================== UNICONS ====================-->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
 
+
+
     <title>ROI Calculator</title>
 </head>
 <body>
@@ -58,7 +60,7 @@
 </header>
 
 <!--==================== Properties ====================-->
-<div class="wrapper">
+<div class="property wrapper" style="margin-left: 55px; margin-right: 55px;">>
     <section class="skills section" id="skills">
         <h2 class="section__title">Property Details</h2>
 
@@ -77,9 +79,6 @@
             </thead>
             <tbody>
             <tr th:each="property : ${properties}">
-                <td>
-                    <input type="checkbox" name="propertyIds" value="${property.id}"/>
-                </td>
                 <td th:text="${property.address}"></td>
                 <td th:text="${property.propertyType}"></td>
                 <td th:text="${property.sqft}"></td>
