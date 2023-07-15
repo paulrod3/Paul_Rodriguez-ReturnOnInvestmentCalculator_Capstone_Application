@@ -92,19 +92,19 @@
         <div class="col-md-6 mx-auto"> <!-- Use "mx-auto" class to center the column -->
           <div class="login-form">
             <h2>Login</h2>
-            <form action="#" th:action="@{/login}" method="post">
+            <form th:action="@{/login}" method="post">
               <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="Enter your email" th:required="required">
+                <label for="username">User Name</label>
+                <input type="text" class="form-control" id="username" name = "username" placeholder="Enter your User Name" th:required="required">
               </div>
               <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Enter your password" th:required="required">
+                <input type="password" class="form-control" id="password" name = "password" placeholder="Enter your password" th:required="required">
               </div>
               <button type="submit" class="btn btn-login btn-block">Sign In</button>
             </form>
             <div class="register-link">
-              New user? <a href="register.html">Register here</a>
+              New user? <a th:href="signup">Register here</a>
             </div>
           </div>
         </div>

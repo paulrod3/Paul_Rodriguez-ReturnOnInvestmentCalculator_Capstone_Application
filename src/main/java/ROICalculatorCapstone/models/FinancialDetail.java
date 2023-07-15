@@ -24,6 +24,7 @@ public class FinancialDetail {
 
     @JoinColumn(name = "property_address")
     private Property property;
+
     public FinancialDetail() {
         // Default constructor for Hibernate
     }
