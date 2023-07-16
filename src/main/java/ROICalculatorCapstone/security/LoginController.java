@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 
@@ -21,17 +22,24 @@ public class LoginController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @GetMapping("/")
+    @GetMapping("/login")
     public String ShowLogin(Model model) {
         return "login";
     }
 
     @GetMapping("/logout")
-    public String logout() {
-        return "redirect:/";
+    public String logout(HttpServletRequest request) {
+        // Clear the user session
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            session.invalidate();
+        }
+
+        // Redirect to the login page
+        return "redirect:/login";
     }
 
-    @PostMapping("/login")
+    @PostMapping("/login1")
     public String login(HttpSession session, @RequestParam("username") String username,
                         @RequestParam("password") String password,
                         Model model) {

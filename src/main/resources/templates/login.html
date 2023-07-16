@@ -92,7 +92,7 @@
         <div class="col-md-6 mx-auto"> <!-- Use "mx-auto" class to center the column -->
           <div class="login-form">
             <h2>Login</h2>
-            <form th:action="@{/login}" method="post">
+            <form th:action="@{/login1}" method="post">
               <div class="form-group">
                 <label for="username">User Name</label>
                 <input type="text" class="form-control" id="username" name = "username" placeholder="Enter your User Name" th:required="required">
@@ -100,6 +100,7 @@
               <div class="form-group">
                 <label for="password">Password</label>
                 <input type="password" class="form-control" id="password" name = "password" placeholder="Enter your password" th:required="required">
+                <label><input type="checkbox" id="show-password">Show Password</label>
               </div>
               <button type="submit" class="btn btn-login btn-block">Sign In</button>
             </form>
@@ -111,7 +112,21 @@
       </div>
     </div>
     <!--==================== MAIN JS ====================-->
+    <script>
+        const passwordInput = document.querySelector("#password");
+        const showPasswordCheckbox = document.querySelector("#show-password")
+
+        showPasswordCheckbox.addEventListener("click", () => {
+            if (showPasswordCheckbox.checked) {
+                passwordInput.type = "text";
+            } else {
+                passwordInput.type = "password";
+            }
+        });
+
+    </script>
     <script src="static/js/main.js"></script>
+
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

@@ -16,6 +16,819 @@
     <!--==================== UNICONS ====================-->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
 
+    <style>
+   /*==================== GOOGLE FONTS ====================*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+/*==================== VARIABLES CSS ====================*/
+:root {
+    --header-height: 3rem;
+
+    /*========== Colors ==========*/
+    /* Change favorite color */
+    --hue-color:  230; /*Purple 250 - Green 142 - Blue 230 - Pink 340*/
+
+    /* HSL color mode */
+    --first-color: hsl(var(--hue-color), 69%, 61%);
+    --first-color-second: hsl(var(--hue-color), 69%, 61%);
+    --first-color-alt: hsl(var(--hue-color), 57%, 53%);
+    --first-color-lighter: hsl(var(--hue-color), 92%, 85%);
+    --title-color: hsl(var(--hue-color), 65%, 46%);
+    --text-color: hsl(var(--hue-color), 8%, 45%);
+    --text-color-light: hsl(var(--hue-color), 8%, 65%);
+    --input-color: hsl(var(--hue-color), 70%, 96%);
+    --body-color: hsl(var(--hue-color), 60%, 99%);
+    --container-color: #fff;
+    --scroll-bar-color: hsl(var(--hue-color), 12%, 90%);
+    --scroll-thumb-color: hsl(var(--hue-color), 12%, 80%);
+
+    /*========== Font and typography ==========*/
+    --body-font: 'Poppins', sans-serif;
+
+    /* .5rem = 8px, 1rem = 16px, 1.5rem = 24px ... */
+    --big-font-size: 2rem;
+    --h1-font-size: 1.5rem;
+    --h2-font-size: 1.25rem;
+    --h3-font-size: 1.125rem;
+    --normal-font-size: .938rem;
+    --small-font-size: .813rem;
+    --smaller-font-size: .75rem;
+
+    /*========== Font weight ==========*/
+    --font-medium: 500;
+    --font-semi-bold: 600;
+
+    /*========== Margins Bottom ==========*/
+    /* .25rem = 4px, .5rem = 8px, .75rem = 12px ... */
+    --mb-0-25: .25rem;
+    --mb-0-5: .5rem;
+    --mb-0-75: .75rem;
+    --mb-1: 1rem;
+    --mb-1-5: 1.5rem;
+    --mb-2: 2rem;
+    --mb-2-5: 2.5rem;
+    --mb-3: 3rem;
+
+    /*========== z index ==========*/
+    --z-tooltip: 10;
+    --z-fixed: 100;
+    --z-modal: 1000;
+}
+
+/* Font size for large devices */
+@media screen and (min-width: 968px) {
+    :root {
+        --big-font-size: 3rem;
+        --h1-font-size: 2.25rem;
+        --h2-font-size: 1.5rem;
+        --h3-font-size: 1.25rem;
+        --normal-font-size: 1rem;
+        --small-font-size: .875rem;
+        --smaller-font-size: .813rem;
+    }
+}
+
+/*========== Variables Dark theme ==========*/
+body.dark-theme{
+   /* HSL color mode */
+
+   --first-color-second: hsl(var(--hue-color), 30%, 8%);
+   --title-color: hsl(var(--hue-color), 8%, 95%);
+   --text-color: hsl(var(--hue-color), 8%, 75%);
+   --input-color: hsl(var(--hue-color), 29%, 16%);
+   --body-color: hsl(var(--hue-color), 28%, 12%);
+   --container-color: hsl(var (--hue-color),100%, 8%);
+}
+
+/*========== Button Dark/Light ==========*/
+.nav__btns{
+  display: flex;
+  align-items: center;
+  margin-right: 3rem;
+}
+
+.change-theme{
+  font-size: 1.25rem;
+  color: var(--title-color);
+  margin-right: var(--mb-1);
+  cursor: pointer;
+}
+
+.change-theme:hover{
+  color: var(--first-color);
+}
+
+
+
+/*==================== BASE ====================*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0 0 var(--header-height) 0;
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: var(--body-color);
+  color: var(--text-color);
+}
+
+h1, h2, h3, h4 {
+  color: var(--title-color);
+  font-weight: var(--font-semi-bold);
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+/*==================== Property HTML ====================*/
+.property__table {
+  margin: 15px;
+}
+.property__table th,
+.property__table td {
+  text-align: center;
+  padding: 10px;
+}
+
+.property__table th {
+  background-color: #f2f2f2;
+}
+
+/*==================== Add expense HTML ====================*/
+
+.expense-form{
+  padding: 40px
+}
+
+/*==================== Financial detail form HTML ====================*/
+
+.findetail-form .form-group{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.findetail-form label {
+  font-weight: bold;
+  width: 300px; /* Adjust the width as needed */
+}
+
+.findetail-form input[type="text"],
+.findetail-form input[type="number"] {
+  display: flexbox;
+  width: 500px;
+  padding: 5px;
+  border: 1px solid #ccc;
+}
+
+/*==================== Financial detail html ====================*/
+
+.fin-detail-buttons-container{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  color: #ffffff;
+}
+
+.fin-detail-buttons-container > * {
+  margin: 0 10px;
+}
+
+/*==================== Renovation expense ====================*/
+.reno_expense_section__title {
+  display: flex;
+  justify-content: center;
+  font-size: var(--h1-font-size);
+  color: var(--title-color);
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.sub_section__title {
+  display: flex;
+  justify-content: center;
+  font-size: var(--h2-font-size);
+  color: var(--title-color);
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.reno_btn{
+  color: #fff;
+
+}
+
+/*==================== REUSABLE CSS CLASSES ====================*/
+.section {
+  padding: 2rem 0 4rem;
+}
+
+.section__title {
+  font-size: var(--h1-font-size);
+  color: var(--title-color);
+}
+
+.section__subtitle {
+  display: block;
+  font-size: var(--small-font-size);
+  margin-bottom: var(--mb-3);
+}
+
+.section__title,
+.section__subtitle {
+  text-align: center;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 83vh;
+}
+
+.save-property-button{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+
+/*==================== LAYOUT ====================*/
+.container {
+  max-width: 768px;
+  margin-left: var(--mb-1-5);
+  margin-right: var(--mb-1-5);
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.header {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: var(--z-fixed);
+  background-color: var(--body-color);
+}
+
+/*==================== NAV ====================*/
+.nav{
+  max-width: 968px;
+  height: var(--header-height);
+  display:flex;
+  justify-content: space-between;
+  align-items: center ;
+}
+
+.nav__logo{
+  color: var(--title-color);
+  font-weight: var(--font-medium);
+}
+
+.nav__toggle{
+  color: var(--title-color);
+  font-weight: var(--font-medium);
+}
+
+.nav__logo:hover {
+  color: var(--first-color);
+}
+
+.nav__toggle {
+  font-size: 1.1rem;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+}
+
+.nav__toggle:hover{
+  color: var(--first-color);
+}
+
+@media screen and (max-width: 767px){
+  .nav__menu{
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--body-color);
+    padding: 2rem 1.5rem 4rem;
+    box-shadow: 0 -1px 4px rgba(0,0, 0,.15);
+    border-radius: 1.5rem 1.5rem 0 0;
+    transition: .3s;
+  }
+}
+
+.nav__list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.nav__link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--small-font-size);
+  color: var(--title-color);
+  font-weight: var(--font-medium);
+  height: 40px; /* Adjust the height as needed */
+}
+
+.nav__link:hover{
+  color: var(--first-color);
+}
+
+.nav__icon{
+  font-size: 1.2rem;
+}
+
+.nav__close{
+  position: absolute;
+  right: 2.5rem;
+  bottom: .5rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--first-color);
+}
+
+.nav__close:hover{
+  color:var(--first-color-alt)
+}
+
+/* show menu */
+.show-menu{
+  bottom: 0;
+}
+
+
+/* Active link */
+
+
+/* Change background header */
+
+/*==================== BUTTONS ====================*/
+.button{
+  display: inline-block;
+  background-color: var(--first-color);
+  color: #fff;
+  padding: 1rem;
+  border-radius: .5rem;
+  font-weight: var(--font-medium)
+}
+
+.button:hover{
+  background-color: var(--first-color-alt);
+}
+
+.button__icon{
+  font-size: 1.25rem;
+  margin-left: var(--mb-0-5);
+  transition: .3s;
+}
+
+.button--flex{
+  display: inline-flex;
+  align-items: center;
+}
+
+
+
+
+
+
+/*==================== SKILLS ====================*/
+.skills__container{
+  row-gap: 0;
+}
+
+.skills__header{
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--mb-2-5);
+  cursor: pointer;
+}
+
+.skills__icon,
+.skills__arrow{
+  font-size: 2rem;
+  color: var(--first-color);
+}
+
+.skills__icon{
+  margin-right: var(--mb-0-75);
+}
+
+.skills__title{
+  font-size: var(--h3-font-size);
+}
+
+.skills__subtitle{
+  font-size: var(--small-font-size);
+  color: var(--text-color-light);
+}
+
+.skills__arrow{
+  margin-left: auto;
+  transition: .4s;
+}
+
+.skills__list{
+  row-gap: 1.5rem;
+  padding-left: 2.7rem;
+
+}
+
+.skills_titles{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--mb-0-5);
+}
+
+.skills__name{
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-medium);
+}
+
+.skills__bar,
+.skills__percentage{
+  height: 5px;
+  border-radius: .25rem;
+  margin-right: 25px;
+}
+
+.skills__bar{
+  background-color: var(--first-color-lighter) ;
+}
+
+.skills__percentage{
+  display: block;
+  background-color: var(--first-color);
+}
+
+.skills__java{
+  width: 70%;
+}
+.skills__sql{
+  width: 75%;
+}
+.skills__hibernate{
+  width: 40%;
+}
+.skills__spring{
+  width: 40%;
+}
+.skills__js{
+  width: 40%;
+}
+.skills__html{
+  width: 75%;
+}
+.skills__css{
+  width: 75%;
+}
+.skills__bootstrap{
+  width: 75%;
+}
+
+.skills__close .skills__list{
+  height: 0;
+  overflow: hidden;
+}
+
+.skills__open .skills__list{
+  height: max-content;
+  margin-bottom: var(--mb-2-5);
+}
+
+.skills__open .skills__arrow{
+  transform: rotate(-180deg);
+}
+
+/*==================== SKILLS ====================*/
+.property__container{
+  row-gap: 0;
+}
+
+.property__header{
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--mb-2-5);
+  cursor: pointer;
+}
+
+.property__icon,
+.property__arrow{
+  font-size: 2rem;
+  color: var(--first-color);
+}
+
+.property__icon{
+  margin-right: var(--mb-0-75);
+}
+
+.property__title{
+  font-size: var(--h3-font-size);
+}
+
+.property__subtitle{
+  font-size: var(--small-font-size);
+  color: var(--text-color-light);
+}
+
+.property__arrow{
+  margin-left: auto;
+  transition: .4s;
+}
+
+.property__list{
+  row-gap: 1.5rem;
+  padding-left: 2.7rem;
+
+}
+
+.property_titles{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--mb-0-5);
+}
+
+.property__name{
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-medium);
+}
+
+
+
+/*==================== CONTACT ME ====================*/
+.contact__container{
+  row-gap: 3rem;
+}
+
+.contact__information{
+  display: flex;
+  margin-bottom: var(--mb-2);
+}
+
+.contact__icon{
+  font-size: 2rem;
+  color: var(--first-color);
+  margin-right: var(--mb-0-75);
+}
+
+.contact__title{
+  font-size: var(--h3-font-size);
+  font-weight: var(--font-medium);
+}
+
+.contact__subtitle{
+  font-size: var(--small-font-size);
+  color: var(--text-color-light);
+}
+
+.contact__content{
+  background-color: var(--input-color);
+  border-radius: .5rem;
+  padding: .75rem 1rem .25rem;
+}
+
+.contact__label{
+  font-size: var(--smaller-font-size);
+  color: tit;
+}
+
+.contact__input{
+  width: 100%;
+  background-color: var(--input-color);
+  color: var(--text-color);
+  font-family: var(--body-font);
+  border: none;
+  outline: none;
+  padding: .25rem .5rem .5rem 0;
+
+}
+
+/*==================== FOOTER ====================*/
+.footer{
+  margin-top: auto;
+}
+
+.footer__container{
+  row-gap: .5rem;
+}
+
+.footer__bg{
+  background-color: var(--first-color-second);
+  padding: 1rem 0 1.5rem;
+}
+
+.footer__title{
+  font-size: var(--h1-font-size);
+  margin-bottom: var(--mb-0-25);
+  margin-left: var(--mb-1-5);
+}
+.footer__subtitle{
+  font-size: var(--small-font-size);
+  margin-left: var(--mb-1-5);
+}
+
+.footer__links{
+  display: flex;
+  flex-direction: row;
+  row-gap: .2rem;
+  margin-left: var(--mb-0-75);
+}
+
+.footer__links:hover{
+  color: var(--first-color-lighter)
+}
+
+.footer__social{
+  font-size: 1.25rem;
+  margin-right: var(--mb-1-5);
+  margin-left: var(--mb-1-5);
+  row-gap: .2rem;
+}
+
+.footer__social:hover{
+  color: var(--first-color-lighter);
+}
+
+.footer__title,
+.footer__subtitle,
+.footer__links,
+.footer__social{
+  color: #fff;
+}
+
+/*==================== MEDIA QUERIES ====================*/
+/* For small devices */
+
+@media screen and (max-width: 350px){
+  .container{
+    margin-left: var(--mb-1);
+    margin-right: var(--mb-1);
+  }
+
+  .nav__menu{
+    padding: 2rem .25rem 4rem;
+  }
+  .nav__list{
+    column-gap: 0;
+  }
+
+  .home__content{
+    grid-template-columns: .25fr 3fr;
+  }
+  .home__blob{
+    width: 180px;
+  }
+
+  .skills__title{
+    font-size: var(--normal-font-size);
+  }
+
+  .qualification__data{
+    gap:.5rem;
+  }
+
+}
+/* For medium devices */
+@media screen and (min-width: 568px){
+  .home__content{
+    grid-template-columns: max-content 1fr 1fr;
+  }
+  .home__data{
+    grid-column: initial;
+  }
+  .home__img{
+    order: 1;
+    justify-self: center;
+  }
+
+  .about__container,
+  .contact__container,
+  .footer__container {
+      grid-template-columns: repeat(2, 1fr);
+
+  }
+  .skills__container{
+    grid-template-columns: repeat(1, 1fr);
+    justify-content: center;
+  }
+
+  .qualification__sections{
+    display: grid;
+    grid-template-columns: .6fr;
+    justify-content: center;
+  }
+}
+
+@media screen and (min-width: 768px){
+  .container{
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .body{
+    margin: 0;
+  }
+  .section{
+    padding: 6rem 0 2rem;
+  }
+  .section__subtitle{
+    margin-bottom: 4rem;
+  }
+
+  .header{
+    top: 0;
+    bottom: initial;
+  }
+
+  .header,
+  .main,
+  .footer__container{
+    padding: 0 1rem;
+  }
+
+  .nav{
+    height:calc(var(--header-height) + 1.5rem) ;
+    column-gap: 1rem;
+  }
+
+  .nav__icon,
+  .nav__close,
+  .nav__toggle{
+    display: none;
+  }
+
+  .nav__list{
+    display: flex;
+    column-gap: 2rem;
+  }
+
+  .nav__menu{
+    margin-left: auto;
+  }
+
+  .change-theme{
+    margin: 0;
+  }
+
+  .home__container{
+    row-gap: 5rem;
+  }
+
+  .home__content{
+    padding-top: 5.5rem;
+    column-gap: 2rem;
+  }
+
+  .home__blob{
+    width: 400px;
+  }
+
+  .about__container{
+    column-gap:  5rem;
+  }
+  .about__img{
+    width: 500px;
+  }
+
+  .about__description{
+    text-align: initial;
+  }
+  .about__info{
+    justify-content: space-between;
+  }
+
+  .about__buttons{
+    justify-content: initial;
+
+  }
+}
+    </style>
 
 
     <title>ROI Calculator</title>
@@ -30,19 +843,14 @@
         <div class="nav__menu" id="nav-menu">
             <ul class="nav__list grid">
                 <li class="nav__item">
-                    <a href="#" class="nav__link">
-                        <i class="uil uil-estate nav__icon"></i> Home
-                    </a>
-                </li>
-                <li class="nav__item">
                     <a href="/properties" class="nav__link">
-                        <i class="uil uil-user nav__icon"></i> Property Details
+                        <i class="uil uil-estate nav__icon"></i> Property Details
                     </a>
-
                 </li>
+
                 <li class="nav__item">
-                    <a href="contactus.html" class="nav__link">
-                        <i class="uil uil-message nav__icon"></i> ContactUs
+                    <a href="/logout" class="nav__link">
+                        <i class="uil uil-message nav__icon"></i> Sign Out
 
                     </a>
                 </li>
@@ -125,15 +933,14 @@
             </div>
 
             <ul class="footer__links">
+
                 <li>
-                    <a href="#" class="footer__links">Home</a>
+                    <a href="/properties" class="footer__links">Property Details</a>
                 </li>
                 <li>
-                    <a href="#" class="footer__links">Property Details</a>
+                    <a href=href="/logout" class="footer__links">Sign Out</a>
                 </li>
-                <li>
-                    <a href="contactus.html" class="footer__links">ContactUs</a>
-                </li>
+
             </ul>
 
             <div class="footer__socials">
@@ -149,7 +956,7 @@
 </footer>
 
 <!--==================== MAIN JS ====================-->
-<script src="#../static/js/main.js"></script>
+<script src="../static/js/main.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>

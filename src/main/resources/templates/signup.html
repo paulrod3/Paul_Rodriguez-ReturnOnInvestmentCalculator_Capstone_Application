@@ -95,11 +95,12 @@
             <div class="form-group">
               <label for="password">Password</label>
               <input type="password" class="form-control" id="password" name = "password" placeholder="Enter your password" th:required="required">
+              <label><input type="checkbox" id="show-password">Show Password</label>
             </div>
             <button type="submit" class="btn btn-register btn-block">Register</button>
           </form>
           <div class="login-link">
-            Already have an account? <a th:href="login">Log in here</a>
+            Already have an account? <a href="/login">Log in here</a>
           </div>
         </div>
       </div>
@@ -107,6 +108,19 @@
   </div>
 
   <!-- Bootstrap JS -->
+  <script>
+        const passwordInput = document.querySelector("#password");
+        const showPasswordCheckbox = document.querySelector("#show-password")
+
+        showPasswordCheckbox.addEventListener("click", () => {
+            if (showPasswordCheckbox.checked) {
+                passwordInput.type = "text";
+            } else {
+                passwordInput.type = "password";
+            }
+        });
+
+    </script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

@@ -9,7 +9,7 @@
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
-   
+
     <!--==================== CSS ====================-->
     <link rel="stylesheet" href="../static/style.css" th:href="@{style.css}">
 
@@ -411,6 +411,12 @@ img {
 .button--flex{
   display: inline-flex;
   align-items: center;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 
@@ -828,6 +834,7 @@ img {
 
   }
 }
+
     </style>
 
     <title>ROI Calculator</title>
@@ -842,19 +849,14 @@ img {
         <div class="nav__menu" id="nav-menu">
             <ul class="nav__list grid">
                 <li class="nav__item">
-                    <a href="#" class="nav__link">
-                        <i class="uil uil-estate nav__icon"></i> Home
-                    </a>
-                </li>
-                <li class="nav__item">
                     <a href="/properties" class="nav__link">
-                        <i class="uil uil-user nav__icon"></i> Property Details
+                        <i class="uil uil-estate nav__icon"></i> Property Details
                     </a>
-
                 </li>
+
                 <li class="nav__item">
-                    <a href="contactus.html" class="nav__link">
-                        <i class="uil uil-message nav__icon"></i> ContactUs
+                    <a href="/logout" class="nav__link">
+                        <i class="uil uil-message nav__icon"></i> Sign Out
 
                     </a>
                 </li>
@@ -869,116 +871,126 @@ img {
             </div>
         </div>
     </nav>
- </header>
- 
-    <!--==================== financial detail form ====================-->
+</header>
+
+<!--==================== financial detail form ====================-->
 <div class="wrapper">
-  <section class="contact section" id="contact">
-    <h2 class="section__title">Add Financial Detail</h2>
-  <form action="/financialdetails/create" method="post"class=findetail-form>
+    <section class="contact section" id="contact">
+        <h2 class="section__title">Add Financial Detail</h2>
+        <form action="/financialdetails/create" method="post" class=findetail-form>
 
-  <div class="form-group">
-  <label for="address">Address:</label>
-  <input type="text" id="address" name="address" th:value="${address}" readonly> <!-- Add the property address as a hidden field -->
-  </div>
-  <div class="form-group">
-  <label for="purchasePrice">Purchase Price:</label>
-  <input type="number" id="purchasePrice" name="purchasePrice" required>
-  </div>
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" th:value="${address}" readonly>
+                <!-- Add the property address as a hidden field -->
+            </div>
+            <div class="form-group">
+                <label for="purchasePrice">Purchase Price:</label>
+                <input type="number" id="purchasePrice" name="purchasePrice" required>
+            </div>
 
-  <div class="form-group">
-  <label for="expectedRehabCosts">Expected Rehab Costs:</label>
-  <input type="number" id="expectedRehabCosts" name="expectedRehabCosts" required>
-  </div>
+            <div class="form-group">
+                <label for="expectedRehabCosts">Expected Rehab Costs:</label>
+                <input type="number" id="expectedRehabCosts" name="expectedRehabCosts" required>
+            </div>
 
-  <div class="form-group">
-  <label for="interestRate">Interest Rate:</label>
-  <input type="number" id="interestRate" name="interestRate" required>
-  </div>
+            <div class="form-group">
+                <label for="interestRate">Interest Rate:</label>
+                <input type="number" id="interestRate" name="interestRate" required>
+            </div>
 
-  <div class="form-group">
-  <label for="anticipatedLengthOfProject">Anticipated Length of Project (in months):</label>
-  <input type="number" id="anticipatedLengthOfProject" name="anticipatedLengthOfProject" required>
-  </div>
+            <div class="form-group">
+                <label for="anticipatedLengthOfProject">Anticipated Length of Project (in months):</label>
+                <input type="number" id="anticipatedLengthOfProject" name="anticipatedLengthOfProject" required>
+            </div>
 
-  <div class="form-group">
-  <label for="loanAmount">Loan Amount:</label>
-  <input type="number" id="loanAmount" name="loanAmount" required>
-  </div>
+            <div class="form-group">
+                <label for="loanAmount">Loan Amount:</label>
+                <input type="number" id="loanAmount" name="loanAmount" required>
+            </div>
 
-  <div class="form-group">
-  <label for="monthlyPropertyTaxes">Monthly Property Taxes:</label>
-  <input type="number" id="monthlyPropertyTaxes" name="monthlyPropertyTaxes" required>
-  </div>
+            <div class="form-group">
+                <label for="monthlyPropertyTaxes">Monthly Property Taxes:</label>
+                <input type="number" id="monthlyPropertyTaxes" name="monthlyPropertyTaxes" required>
+            </div>
 
-  <div class="form-group">
-  <label for="monthlyInsurance">Monthly Insurance:</label>
-  <input type="number" id="monthlyInsurance" name="monthlyInsurance" required>
-  </div>
+            <div class="form-group">
+                <label for="monthlyInsurance">Monthly Insurance:</label>
+                <input type="number" id="monthlyInsurance" name="monthlyInsurance" required>
+            </div>
 
-  <div class="form-group">
-  <label for="monthlyUtilityBills">Monthly Utility Bills:</label>
-  <input type="number" id="monthlyUtilityBills" name="monthlyUtilityBills" required>
-  </div>
+            <div class="form-group">
+                <label for="monthlyUtilityBills">Monthly Utility Bills:</label>
+                <input type="number" id="monthlyUtilityBills" name="monthlyUtilityBills" required>
+            </div>
 
-  <div class="form-group">
-  <label for="otherMonthlyExpenses">Other Monthly Expenses:</label>
-  <input type="number" id="otherMonthlyExpenses" name="otherMonthlyExpenses" required>
-  </div>
-  
-  <div class="form-group">
-  <label for="costsOfSale">Costs of Sale:</label>
-  <input type="number" id="costsOfSale" name="costsOfSale" required>
-  </div>
+            <div class="form-group">
+                <label for="otherMonthlyExpenses">Other Monthly Expenses:</label>
+                <input type="number" id="otherMonthlyExpenses" name="otherMonthlyExpenses" required>
+            </div>
 
-  <div class="form-group">
-  <label for="afterRepairValue">After Repair Value:</label>
-  <input type="number" id="afterRepairValue" name="afterRepairValue" required>
-  </div>
-        <button type="submit" class="btn btn-secondary savefindetail-button">Save Financial Detail</button>
-</form>
-</section>
+            <div class="form-group">
+                <label for="costsOfSale">Costs of Sale:</label>
+                <input type="number" id="costsOfSale" name="costsOfSale" required>
+            </div>
+
+            <div class="form-group">
+                <label for="afterRepairValue">After Repair Value:</label>
+                <input type="number" id="afterRepairValue" name="afterRepairValue" required>
+            </div>
+            <div class="button-container">
+                <button type="submit" class="savefindetail-button btn btn-secondary">Save Financial Detail</button>
+            </div>
+        </form>
+    </section>
 </div>
- <!--==================== FOOTER ====================-->
- <footer class="footer">
-  <div class="footer__bg">
-      <div class="footer__container container grid">
-          <div>
-              <h1 class="footer__title">R&C Realty Group</h1>
-          </div>
+<!--==================== FOOTER ====================-->
+<footer class="footer">
+    <div class="footer__bg">
+        <div class="footer__container container grid">
+            <div>
+                <h1 class="footer__title">R&C Realty Group</h1>
+            </div>
 
-          <ul class="footer__links">
-              <li>
-                  <a href="#" class="footer__links">Home</a>
-              </li>
-              <li>
-                  <a href="#" class="footer__links">Property Details</a>
-              </li>
-              <li>
-                  <a href="contactus.html" class="footer__links">ContactUs</a>
-              </li>
-          </ul>
+            <ul class="footer__links">
 
-          <div class="footer__socials">
-              <a href="https://www.facebook.com" target="_blank" class="footer__social">
-                  <i class="uil uil-facebook-f"></i>
-              </a>
-              <a href="https://www.instagram.com" target="_blank" class="footer__social">
-                  <i class="uil uil-instagram"></i>
-              </a>
-          </div>
-      </div>
-  </div>
+                <li>
+                    <a href="/properties" class="footer__links">Property Details</a>
+                </li>
+                <li>
+                    <a href=href="/logout" class="footer__links">Sign Out</a>
+                </li>
+
+            </ul>
+
+            <div class="footer__socials">
+                <a href="https://www.facebook.com" target="_blank" class="footer__social">
+                    <i class="uil uil-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com" target="_blank" class="footer__social">
+                    <i class="uil uil-instagram"></i>
+                </a>
+            </div>
+        </div>
+    </div>
 </footer>
 
+
 <!--==================== MAIN JS ====================-->
-<script src="#"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="../static/js/main.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 <!-- Bootstrap JavaScript (Popper.js and Bootstrap) -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.min.js"></script>
+
 </div>
 </body>
 </html>

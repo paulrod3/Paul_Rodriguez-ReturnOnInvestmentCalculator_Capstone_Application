@@ -11,4 +11,6 @@ public interface PropertyRepository extends JpaRepository<Property, String> {
     List<Property> findByAddress(String address);
 
     void deleteByAddress(String address);
+
+    boolean existsByAddress(String s);
 }

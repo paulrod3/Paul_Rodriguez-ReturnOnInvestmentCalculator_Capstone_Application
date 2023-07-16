@@ -33,6 +33,10 @@ public class Property {
         expenses = new ArrayList<>();
     }
 
+    public Property(String s) {
+
+    }
+
     // Getters and setters
 
     public void addRenovationExpense(RenovationExpense renovationExpense) {

@@ -64,4 +64,5 @@ public class RenovationExpense {
     public void setDateOfPurchase(String dateOfPurchase) {
         this.dateOfPurchase = dateOfPurchase;
     }
+
 }

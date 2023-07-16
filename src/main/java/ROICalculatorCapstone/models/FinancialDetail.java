@@ -155,4 +155,10 @@ public class FinancialDetail {
     public void setProperty(Property property) {
         this.property = property;
     }
+
+    public void setIncome(int i) {
+    }
+
+    public void setExpenses(int i) {
+    }
 }

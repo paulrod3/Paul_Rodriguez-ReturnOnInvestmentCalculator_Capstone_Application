@@ -841,19 +841,14 @@ img {
         <div class="nav__menu" id="nav-menu">
             <ul class="nav__list grid">
                 <li class="nav__item">
-                    <a href="home.html" class="nav__link">
-                        <i class="uil uil-estate nav__icon"></i> Home
-                    </a>
-                </li>
-                <li class="nav__item">
                     <a href="/properties" class="nav__link">
-                        <i class="uil uil-user nav__icon"></i> Property Details
+                        <i class="uil uil-estate nav__icon"></i> Property Details
                     </a>
-
                 </li>
+
                 <li class="nav__item">
-                    <a href="contact.html" class="nav__link">
-                        <i class="uil uil-message nav__icon"></i> ContactUs
+                    <a href="/logout" class="nav__link">
+                        <i class="uil uil-message nav__icon"></i> Sign Out
 
                     </a>
                 </li>
@@ -899,6 +894,7 @@ img {
             </div>
             <div class="save-property-button">
                 <button type="submit" class="btn btn-primary">Update Property</button>
+                <a href="/properties" class="btn btn-secondary">Back to Properties</a>
             </div>
         </form>
     </section>
@@ -913,15 +909,14 @@ img {
             </div>
 
             <ul class="footer__links">
+
                 <li>
-                    <a href="#" class="footer__links">Home</a>
+                    <a href="/properties" class="footer__links">Property Details</a>
                 </li>
                 <li>
-                    <a href="#" class="footer__links">Property Details</a>
+                    <a href=href="/logout" class="footer__links">Sign Out</a>
                 </li>
-                <li>
-                    <a href="contactus.html" class="footer__links">ContactUs</a>
-                </li>
+
             </ul>
 
             <div class="footer__socials">
@@ -936,8 +931,9 @@ img {
     </div>
 </footer>
 
+
 <!--==================== MAIN JS ====================-->
-<script src="#"></script>
+<script src="../static/js/main.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
@@ -950,5 +946,6 @@ img {
 <!-- Bootstrap JavaScript (Popper.js and Bootstrap) -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.min.js"></script>
+
 </body>
 </html>
