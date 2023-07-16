@@ -6,6 +6,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+//The UserController class is a RESTful API controller that handles user-related
+// operations such as creating, retrieving, updating, and deleting users. It
+// interacts with the UserService to perform these operations and returns responses
+// using the ResponseEntity class.
 @RestController
 @RequestMapping("api/v1")
 public class UserController {

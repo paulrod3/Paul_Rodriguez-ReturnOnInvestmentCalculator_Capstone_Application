@@ -4,6 +4,9 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+// The Property class represents a real estate property with attributes like address,
+// property type, and number of bedrooms/bathrooms, and it has relationships with FinancialDetail
+// and RenovationExpense entities.
 @Entity
 public class Property {
     @Id

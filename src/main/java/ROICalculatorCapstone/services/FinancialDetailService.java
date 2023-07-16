@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 import ROICalculatorCapstone.repositories.FinancialDetailRepository;
 import ROICalculatorCapstone.repositories.PropertyRepository;
 
+//The FinancialDetailService class is a service component that provides methods for
+// interacting with financial details of properties. It retrieves, saves, updates,
+// and deletes financial details using the FinancialDetailRepository
 @Service
 public class FinancialDetailService {
     private final FinancialDetailRepository financialDetailRepository;

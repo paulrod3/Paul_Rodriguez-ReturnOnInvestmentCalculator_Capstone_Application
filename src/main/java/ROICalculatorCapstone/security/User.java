@@ -10,6 +10,8 @@ import javax.persistence.Table;
 import java.util.Collection;
 import java.util.Collections;
 
+//The User class is an entity representing user information. It is mapped to the "users"
+// table in the database and contains fields for username and password.
 @Entity
 @Table(name = "users")
 @Data

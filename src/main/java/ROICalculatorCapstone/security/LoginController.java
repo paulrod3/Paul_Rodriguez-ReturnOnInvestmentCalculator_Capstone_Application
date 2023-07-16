@@ -13,7 +13,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 
-
+//The LoginController is a controller class responsible for handling login-related
+// HTTP requests. It interacts with the UserRepository and PasswordEncoder to authenticate
+// users and manage user sessions. It provides endpoints for displaying the login page,
+// logging out users by invalidating the session, and processing the login form data to
+// authenticate users and redirect them to the properties page if successful.
 @Controller
 public class LoginController {
 

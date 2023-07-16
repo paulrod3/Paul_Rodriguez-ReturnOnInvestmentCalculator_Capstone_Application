@@ -8,6 +8,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+//The UserServiceImpl class is an implementation of the UserService interface. It provides
+// the functionality to create a user, validate user credentials, retrieve user information,
+// update user details, and delete a user. It uses the UserRepository for data access and
+// PasswordEncoder for password encoding.
 @Service
 public class UserServiceImpl implements UserService {
 

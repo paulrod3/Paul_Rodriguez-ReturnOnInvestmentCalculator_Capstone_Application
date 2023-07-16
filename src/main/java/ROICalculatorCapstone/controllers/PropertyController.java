@@ -7,6 +7,10 @@ import ROICalculatorCapstone.services.PropertyService;
 
 import java.util.List;
 
+//The PropertyController is a controller that handles HTTP requests related to properties.
+// It communicates with the PropertyService to perform CRUD operations and return appropriate
+// view templates or redirects. It provides endpoints for displaying property details, creating
+// new properties, updating existing properties, and deleting properties.
 @Controller
 @RequestMapping("/properties")
 public class PropertyController {

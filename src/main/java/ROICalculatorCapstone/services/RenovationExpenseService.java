@@ -10,6 +10,10 @@ import ROICalculatorCapstone.repositories.RenovationExpenseRepository;
 import java.util.Collections;
 import java.util.List;
 
+//The RenovationExpenseService class is a service component that provides methods for interacting
+// with renovation expenses. It utilizes the RenovationExpenseRepository for data access. The methods
+// include retrieving a renovation expense by ID, saving a renovation expense, deleting a renovation
+// expense, and retrieving renovation expenses associated with a property address.
 @Service
 public class RenovationExpenseService {
     private final RenovationExpenseRepository renovationExpenseRepository;

@@ -10,6 +10,12 @@ import ROICalculatorCapstone.repositories.RenovationExpenseRepository;
 import javax.transaction.Transactional;
 import java.util.List;
 
+//The PropertyService class is a service component that provides methods for interacting with
+// properties and their associated renovation expenses. It utilizes the PropertyRepository and
+// RenovationExpenseRepository for data access. The methods include retrieving all properties,
+// getting a property by address, saving a property, updating a property, deleting a property,
+// adding a renovation expense to a property, and removing a renovation expense from a property.
+// The service is annotated with @Transactional to ensure data consistency during transactions.
 @Service
 @Transactional
 public class PropertyService {

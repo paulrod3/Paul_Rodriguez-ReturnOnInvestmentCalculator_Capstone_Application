@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+//The SignupController class handles the signup functionality by displaying
+// the signup form and creating new user accounts. It ensures that the entered
+// username is unique before creating a new user.
 @Controller
 public class SignupController {
 

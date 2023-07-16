@@ -4,6 +4,10 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+//        The FinancialDetail class represents the financial details associated with
+//        a real estate property, including purchase price, rehab costs, interest
+//        rate, loan amount, property taxes, insurance, utility bills, and more,
+//        with a one-to-one relationship to the Property entity.
 @Entity
 public class FinancialDetail {
     @Id

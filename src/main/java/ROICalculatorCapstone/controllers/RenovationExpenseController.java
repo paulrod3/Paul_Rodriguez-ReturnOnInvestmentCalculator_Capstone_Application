@@ -13,6 +13,11 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
+//The RenovationExpenseController is a controller that handles HTTP requests related to
+// renovation expenses. It communicates with the RenovationExpenseService and PropertyService
+// to perform CRUD operations and retrieve necessary data. It provides endpoints for displaying
+// renovation expense details, adding new renovation expenses for a property, updating existing
+// renovation expenses, and deleting renovation expenses.
 @Controller
 @RequestMapping("/renovationexpenses")
 public class RenovationExpenseController {

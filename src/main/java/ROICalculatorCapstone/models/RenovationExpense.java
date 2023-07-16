@@ -2,6 +2,10 @@ package ROICalculatorCapstone.models;
 
 import javax.persistence.*;
 
+//The RenovationExpense class represents an expense related to the renovation
+// of a real estate property, with attributes such as description, amount,
+// and date of purchase. It has a many-to-one relationship with the Property
+// entity through the property field.
 @Entity
 public class RenovationExpense {
     @Id

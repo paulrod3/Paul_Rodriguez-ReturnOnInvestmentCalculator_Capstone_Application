@@ -8,5 +8,8 @@ import java.util.List;
 
 @Repository
 public interface RenovationExpenseRepository extends JpaRepository<RenovationExpense, Long> {
+
+    //Retrieves a list of renovation expenses associated with a property based on the provided
+    // property address.
     List<RenovationExpense> findByPropertyAddress(String address);
 }

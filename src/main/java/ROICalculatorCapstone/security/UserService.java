@@ -2,6 +2,9 @@ package ROICalculatorCapstone.security;
 
 import java.util.List;
 
+//The UserService interface defines methods for user-related operations such as
+// creating a user, validating user credentials, retrieving a user by username,
+// retrieving all users, updating a user, and deleting a user.
 public interface UserService {
 
     // Post

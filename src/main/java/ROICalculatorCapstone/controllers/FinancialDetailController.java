@@ -8,6 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ROICalculatorCapstone.services.FinancialDetailService;
 
+//The FinancialDetailController is a controller that handles HTTP requests related to financial
+// details. It communicates with the FinancialDetailService and PropertyService to perform CRUD
+// operations and return appropriate view templates or redirects.
 @Controller
 @RequestMapping("/financialdetails")
 public class FinancialDetailController {
