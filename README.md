@@ -38,8 +38,9 @@ The ROI Calculator Application is a tool that allows users to track financial da
 1. Clone the repository:
 
     ```
-    git clone <repository-url>
-    
+    git clone 
+   https://github.com/paulrod3/Paul_Rodriguez-ReturnOnInvestmentCalculator_Capstone_Application.git
+
     ```
 
 2. Configure the database:
@@ -115,7 +116,7 @@ The ROI Calculator Application is a tool that allows users to track financial da
 
 ## Lessons Learned
 - Getting To MVP was the biggest lesson learned. I had very big goals in the beginning and once I trimmed that down to something manageable I was able to make real progress
-- I learned that its better to get things to work quickly and then go back afterwards to tweak and style. I wasted a lot of time initially trying to make things perfect the first go around.
+- I learned that it is better to get things to work quickly and then go back afterwards to tweak and style. I wasted a lot of time initially trying to make things perfect the first go around.
 - Commit and push as often as you can. This saved me over and over again from having to rewrite a lot of code due to getting to far ahead and breaking my application.
 
 ## Future Improvements
