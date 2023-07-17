@@ -30,6 +30,6 @@ public class SignupController {
             return "signup";
         }
         userService.createUser(user);
-        return "redirect:/";
+        return "redirect:/login";
     }
 }
